@@ -1,0 +1,56 @@
+# 🌐 Niveditha Jayakumar — Portfolio
+
+A personal portfolio website showcasing my work, projects, and writing at the intersection of **technology, AI, and storytelling**.
+
+🔗 Live Site: https://marvelcodeX.github.io
+
+---
+
+## ✨ About
+
+This portfolio reflects how I approach building and thinking:
+
+* 🤖 Human-centered AI systems
+* 🧠 Exploring technology beyond functionality
+* ✍️ Writing about ideas, philosophy, and systems
+* ⚡ Hackathon-driven, fast iteration mindset
+
+---
+
+## 🚀 Features
+
+* Responsive design (mobile + desktop)
+* Dark / Light mode toggle 🌗
+* Smooth animations and transitions
+* Clean, minimal, and modern UI
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* HTML
+* CSS
+* JavaScript
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── index.html
+├── styles.css
+├── script.js
+└── README.md
+```
+
+---
+
+## ⭐ A Note
+
+This portfolio is not just a collection of projects —
+it’s an evolving space that reflects how I think, build, and write.
+
+---
