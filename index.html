@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Niveditha | Portfolio</title>
+    <meta name="description" content="Personal portfolio of Niveditha Jayakumar, an information science and engineering student building thoughtful technology and writing about ideas." />
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") document.documentElement.setAttribute("data-theme", "light");
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Ambient background layers -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="bg-glow glow-1" aria-hidden="true"></div>
+    <div class="bg-glow glow-2" aria-hidden="true"></div>
+    <div class="bg-glow glow-3" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="#home">
+          <span class="brand-bracket">[</span>Niveditha Jayakumar<span class="brand-bracket">]</span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+          <a href="#about"><span class="nav-num">01.</span>About</a>
+          <a href="#projects"><span class="nav-num">02.</span>Projects</a>
+          <a href="#writing"><span class="nav-num">03.</span>Writing</a>
+          <a href="#skills"><span class="nav-num">04.</span>Skills</a>
+          <a href="#timeline"><span class="nav-num">05.</span>Journey</a>
+          <a href="#contact"><span class="nav-num">06.</span>Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+              <span class="toggle-icon sun">☀</span>
+              <span class="toggle-icon moon">◑</span>
+            </span>
+          </button>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+
+      <!-- HERO -->
+      <section class="hero section">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow reveal">
+                <span class="cursor-blink">▋</span> Information Science and Engineering Student · Builder · Writer
+              </p>
+
+              <h1 class="hero-heading reveal">
+                <span class="h1-line">Hi,</span>
+                <span class="h1-line h1-name">I'm <em>Niveditha</em></span>
+              </h1>
+
+              <p class="hero-text reveal">
+                I love to build and write about technology,<br>stories, and ideas.
+              </p>
+
+              <div class="hero-actions reveal">
+                <a class="button button-primary" href="#projects">
+                  <span>View Projects</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="button button-ghost" href="#writing">Read My Writing</a>
+                <a class="button button-ghost" href="#contact">Contact</a>
+              </div>
+
+              <ul class="hero-tags reveal" aria-label="Highlights">
+                <li>AI with empathy</li>
+                <li>Hackathon-built ideas</li>
+                <li>Stories behind systems</li>
+              </ul>
+            </div>
+
+            <aside class="hero-card reveal" aria-label="Profile summary">
+              <div class="card-header">
+                <div class="card-title-row">
+                  <span class="live-dot"></span>
+                  <span class="card-label">status.active</span>
+                </div>
+              </div>
+              <p class="card-tagline">Building technology that feels useful, warm, and real</p>
+              <div class="activity-feed">
+                <a class="activity-item" href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer">
+                  <span class="activity-tag tag-project">project</span>
+                  <div class="activity-body">
+                    <span class="activity-title">NLP Contract Analyzer</span>
+                    <span class="activity-sub">LegalBERT · clause classification · Flask</span>
+                  </div>
+                  <span class="activity-time">recent ↗</span>
+                </a>
+                <a class="activity-item" href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer">
+                  <span class="activity-tag tag-project">project</span>
+                  <div class="activity-body">
+                    <span class="activity-title">Manasvi</span>
+                    <span class="activity-sub">AI mental wellness · mood analysis · NLP</span>
+                  </div>
+                  <span class="activity-time">recent ↗</span>
+                </a>
+                <a class="activity-item" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">
+                  <span class="activity-tag tag-write">writing</span>
+                  <div class="activity-body">
+                    <span class="activity-title">Essays on Substack & Medium</span>
+                    <span class="activity-sub">Technology, philosophy, and ideas</span>
+                  </div>
+                  <span class="activity-time">ongoing ↗</span>
+                </a>
+                <a class="activity-item" href="https://www.linkedin.com/in/niveditha-jayakumar/" target="_blank" rel="noreferrer">
+                  <span class="activity-tag tag-focus">focus</span>
+                  <div class="activity-body">
+                    <span class="activity-title">Creative Intern @ FiniteLoop</span>
+                    <span class="activity-sub">Design thinking · communication · execution</span>
+                  </div>
+                  <span class="activity-time">now ↗</span>
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 01</span> About</p>
+            <h2>A little bit about how I got here.</h2>
+          </div>
+          <div class="about-block reveal">
+            <div class="about-accent-bar"></div>
+            <p>
+              I'm an information science and engineering student who enjoys building things that feel
+              both intelligent and deeply human. Hackathons taught me how to turn rough
+              ideas into working systems quickly, and projects like <strong>Manasvi</strong>
+              reminded me that technology can do more than solve tasks — it can create
+              space for comfort, clarity, and care. I'm especially drawn to AI,
+              meaningful tech, and mental wellness, and alongside all of that, I love
+              writing because storytelling helps me understand the kind of future I want
+              to build toward.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 02</span> Projects</p>
+            <h2>Work that reflects what I care about.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card reveal">
+              <div class="project-index">01</div>
+              <div class="project-inner">
+                <p class="project-label">AI + Mental Wellness</p>
+                <h3>Manasvi</h3>
+                <p>An AI mental wellness chatbot designed to respond with empathy, mood awareness, and culturally grounded support.</p>
+                <p>It brings together mood analysis, pranayama suggestions, and familiar coping methods to make emotional care feel more personal and accessible.</p>
+              </div>
+              <ul class="stack-list">
+                <li>Python</li><li>Flask</li><li>HTML</li><li>CSS</li><li>NLP</li><li>AI</li>
+              </ul>
+              <div class="project-footer">
+                <a class="button button-sm" href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+                <details class="project-details">
+                  <summary>More ↓</summary>
+                  <p>Manasvi reflects the kind of systems I want to build: technically capable, emotionally aware, and meaningful beyond the demo itself.</p>
+                </details>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="project-index">02</div>
+              <div class="project-inner">
+                <p class="project-label">NLP + Legal Tech</p>
+                <h3>NLP Contract Analyzer</h3>
+                <p>An end-to-end legal document analysis system that classifies contract clauses and extracts legal entities with far less manual effort.</p>
+                <p>Built with LegalBERT and NLP, then wrapped in a clean Flask web app so complex legal analysis feels easier to use and understand.</p>
+              </div>
+              <ul class="stack-list">
+                <li>Python</li><li>Flask</li><li>LegalBERT</li><li>NLP</li><li>HTML</li><li>CSS</li>
+              </ul>
+              <div class="project-footer">
+                <a class="button button-sm" href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+                <details class="project-details">
+                  <summary>More ↓</summary>
+                  <p>This project sits at the intersection of language, systems, and usability — exactly the kind of problem space I enjoy exploring.</p>
+                </details>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- WRITING -->
+      <section class="section" id="writing">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 03</span> Writing</p>
+            <h2>I write about the questions technology leaves behind.</h2>
+          </div>
+          <div class="writing-grid">
+            <article class="writing-card reveal">
+              <div class="writing-icon">✍</div>
+              <div>
+                <h3>Substack</h3>
+                <p>I write about technology, philosophy, and ideas that make us think.</p>
+                <a class="text-link" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">Read on Substack ↗</a>
+              </div>
+            </article>
+            <article class="writing-card reveal">
+              <div class="writing-icon">◎</div>
+              <div>
+                <h3>Medium</h3>
+                <p>Essays and reflections where technology meets storytelling, curiosity, and the quieter questions we usually rush past.</p>
+                <a class="text-link" href="https://medium.com/@nivedithaja" target="_blank" rel="noreferrer">Read on Medium ↗</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 04</span> Skills</p>
+            <h2>The tools I come back to most often.</h2>
+          </div>
+          <div class="skills-grid">
+            <div class="skill-block reveal">
+              <span class="skill-category">Core Languages</span>
+              <div class="skill-tags"><span>Python</span><span>JavaScript</span><span>C</span><span>C++</span></div>
+            </div>
+            <div class="skill-block reveal">
+              <span class="skill-category">Web & App Development</span>
+              <div class="skill-tags"><span>HTML</span><span>CSS</span><span>React</span><span>Flask</span><span>Django</span><span>Gradio</span></div>
+            </div>
+            <div class="skill-block reveal">
+              <span class="skill-category">Database</span>
+              <div class="skill-tags"><span>MySQL</span><span>MongoDB</span><span>Cassandra</span></div>
+            </div>
+            <div class="skill-block reveal">
+              <span class="skill-category">Tools & Environment</span>
+              <div class="skill-tags"><span>Git</span><span>VS Code</span><span>Colab</span><span>Linux</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT I CARE ABOUT -->
+      <section class="section" id="care">
+        <div class="container">
+          <div class="care-band reveal">
+            <div class="care-label">What I Care About</div>
+            <p>Technology matters more when it stays human. I care about human-centered technology, mental wellness, and building meaningful systems that do more than optimize for speed. I'm drawn to work that is useful, emotionally aware, and environmentally conscious — because the future we build should feel thoughtful in both impact and intent.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="section" id="timeline">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 05</span> Experience & Education</p>
+            <h2>The path so far.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="tl-item reveal">
+              <div class="tl-left">
+                <span class="tl-tag">Now</span>
+              </div>
+              <div class="tl-connector"><div class="tl-dot"></div></div>
+              <div class="tl-card">
+                <h3>Creative Intern</h3>
+                <p class="tl-meta">FiniteLoop</p>
+                <p>Working in a space where ideas, communication, design thinking, and execution overlap in interesting ways.</p>
+              </div>
+            </article>
+
+            <article class="tl-item reveal">
+              <div class="tl-left">
+                <span class="tl-tag">Build</span>
+              </div>
+              <div class="tl-connector"><div class="tl-dot"></div></div>
+              <div class="tl-card">
+                <h3>Hackathon Journey</h3>
+                <p class="tl-meta">Aventus 2.0 · Recursive · Aventus 3.0 · HackCulture - WitchHunt</p>
+                <p>Hackathons pushed me to think quickly, collaborate honestly, and shape half-formed ideas into something real under pressure.</p>
+              </div>
+            </article>
+
+            <article class="tl-item reveal">
+              <div class="tl-left">
+                <span class="tl-tag">Study</span>
+              </div>
+              <div class="tl-connector"><div class="tl-dot"></div></div>
+              <div class="tl-card">
+                <h3>Information Science and Engineering Student</h3>
+                <p class="tl-meta">Dayananda Sagar College of Engineering</p>
+                <p>Learning through coursework, projects, and constant experimentation, while figuring out how engineering and storytelling can strengthen each other.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="contact-wrap reveal">
+            <div class="contact-copy">
+              <p class="eyebrow"><span class="eyebrow-num">// 06</span> Contact</p>
+              <h2>Let's talk about ideas worth building.</h2>
+              <p>If you want to talk about technology, writing, AI, or meaningful product work, I'd love to hear from you.</p>
+            </div>
+            <div class="contact-links">
+              <a href="mailto:nivedithaja@gmail.com" class="contact-link">
+                <span class="contact-link-label">✉ Email</span>
+                <span class="contact-link-val">nivedithaja@gmail.com</span>
+                <span class="contact-link-arrow">↗</span>
+              </a>
+              <a href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer" class="contact-link">
+                <span class="contact-link-label">⌥ GitHub</span>
+                <span class="contact-link-val">marvelcodeX</span>
+                <span class="contact-link-arrow">↗</span>
+              </a>
+              <a href="https://www.linkedin.com/in/niveditha-jayakumar/" target="_blank" rel="noreferrer" class="contact-link">
+                <span class="contact-link-label">◈ LinkedIn</span>
+                <span class="contact-link-val">niveditha-jayakumar</span>
+                <span class="contact-link-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <p><span class="mono">©2026</span> Niveditha. Built with HTML, CSS & JS.</p>
+        <a href="#home" class="back-top">↑ Back to top</a>
+      </div>
+    </footer>
+  </body>
+</html>
