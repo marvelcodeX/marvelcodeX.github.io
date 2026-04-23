@@ -48,9 +48,16 @@ This portfolio reflects how I approach building and thinking:
 
 ---
 
+## ⚠️ Usage Notice
+
+This portfolio is a personal project and reflects my individual work, ideas, and design decisions.
+
+While you’re welcome to explore and take inspiration, **please do not copy, reproduce, or reuse the code or design directly without permission**.
+
+
+---
+
 ## ⭐ A Note
 
 This portfolio is not just a collection of projects —
 it’s an evolving space that reflects how I think, build, and write.
-
----
