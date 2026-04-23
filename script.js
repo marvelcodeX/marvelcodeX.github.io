@@ -1,1 +1,157 @@
-document.documentElement.classList.add("js");const root=document.documentElement,body=document.body,navToggle=document.querySelector(".nav-toggle"),themeToggle=document.querySelector(".theme-toggle"),navLinks=Array.from(document.querySelectorAll(".site-nav a")),revealItems=document.querySelectorAll(".reveal"),sections=document.querySelectorAll("main section[id]"),applyTheme=e=>{if("light"===e?root.setAttribute("data-theme","light"):root.removeAttribute("data-theme"),themeToggle){const t="light"===e;themeToggle.setAttribute("aria-pressed",String(t)),themeToggle.setAttribute("aria-label",t?"Switch to dark mode":"Switch to light mode"),themeToggle.setAttribute("title",t?"Switch to dark mode":"Switch to light mode")}},storedTheme=localStorage.getItem("theme");if(applyTheme("light"===storedTheme?"light":"dark"),themeToggle&&themeToggle.addEventListener("click",()=>{const e="light"===root.getAttribute("data-theme")?"dark":"light";applyTheme(e),localStorage.setItem("theme",e)}),navToggle&&(navToggle.addEventListener("click",()=>{const e=body.classList.toggle("nav-open");navToggle.setAttribute("aria-expanded",String(e)),navToggle.setAttribute("aria-label",e?"Close navigation menu":"Open navigation menu")}),navLinks.forEach(e=>{e.addEventListener("click",()=>{body.classList.remove("nav-open"),navToggle.setAttribute("aria-expanded","false"),navToggle.setAttribute("aria-label","Open navigation menu")})})),"IntersectionObserver"in window){const e=new IntersectionObserver((e,t)=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add("is-visible"),t.unobserve(e.target))})},{threshold:.14,rootMargin:"0px 0px -40px 0px"});revealItems.forEach(t=>e.observe(t));const t=new IntersectionObserver(e=>{e.forEach(e=>{if(!e.isIntersecting)return;const t=e.target.id;navLinks.forEach(e=>{const a=e.getAttribute("href")===`#${t}`;e.classList.toggle("active",a)})})},{threshold:.35,rootMargin:"-15% 0px -45% 0px"});sections.forEach(e=>t.observe(e))}else revealItems.forEach(e=>e.classList.add("is-visible"));const parallaxCard=document.getElementById("parallax-card"),cardWrap=parallaxCard?parallaxCard.closest(".hero-card-wrap"):null;if(parallaxCard&&cardWrap){const e=()=>{const e=.12*window.scrollY;cardWrap.style.transform=`translateY(${-12-e}px)`};window.addEventListener("scroll",e,{passive:!0});const t=document.querySelector(".hero");t&&(t.addEventListener("mousemove",e=>{const t=parallaxCard.getBoundingClientRect(),a=t.left+t.width/2,r=t.top+t.height/2,o=(e.clientX-a)/(t.width/2),l=(6*-((e.clientY-r)/(t.height/2))).toFixed(2),s=(6*o).toFixed(2);parallaxCard.style.transform=`perspective(900px) rotateX(${l}deg) rotateY(${s}deg) scale(1.02)`}),t.addEventListener("mouseleave",()=>{parallaxCard.style.transform="perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)"})),window.matchMedia("(max-width: 980px)").matches&&(cardWrap.style.transform="none")}const terminalBody=document.querySelector(".terminal-body");if(terminalBody){Array.from(terminalBody.children).forEach((e,t)=>{e.style.opacity="0",setTimeout(()=>{e.style.transition="opacity 0.3s ease",e.style.opacity="1"},400+90*t)})}const skillGroups=document.querySelectorAll(".skill-group");skillGroups.forEach(e=>{e.querySelectorAll(".skill-tags span").forEach((e,t)=>{e.style.transitionDelay=60*t+"ms"})});
+document.documentElement.classList.add("js");
+
+const root = document.documentElement;
+const body = document.body;
+const navToggle = document.querySelector(".nav-toggle");
+const themeToggle = document.querySelector(".theme-toggle");
+const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+const revealItems = document.querySelectorAll(".reveal");
+const sections = document.querySelectorAll("main section[id]");
+
+const applyTheme = (theme) => {
+  if (theme === "light") {
+    root.setAttribute("data-theme", "light");
+  } else {
+    root.removeAttribute("data-theme");
+  }
+
+  if (themeToggle) {
+    const isLight = theme === "light";
+    themeToggle.setAttribute("aria-pressed", String(isLight));
+    themeToggle.setAttribute(
+      "aria-label",
+      isLight ? "Switch to dark mode" : "Switch to light mode"
+    );
+    themeToggle.setAttribute(
+      "title",
+      isLight ? "Switch to dark mode" : "Switch to light mode"
+    );
+  }
+};
+
+const storedTheme = localStorage.getItem("theme");
+applyTheme(storedTheme === "light" ? "light" : "dark");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextTheme =
+      root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    applyTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+  });
+}
+
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = body.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+    navToggle.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      body.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open navigation menu");
+    });
+  });
+}
+
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const currentId = entry.target.id;
+        navLinks.forEach((link) => {
+          const isMatch = link.getAttribute("href") === `#${currentId}`;
+          link.classList.toggle("active", isMatch);
+        });
+      });
+    },
+    { threshold: 0.35, rootMargin: "-15% 0px -45% 0px" }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+// ===========================
+// PARALLAX CARD on scroll + mouse tilt
+// ===========================
+const parallaxCard = document.getElementById("parallax-card");
+const cardWrap = parallaxCard ? parallaxCard.closest(".hero-card-wrap") : null;
+
+if (parallaxCard && cardWrap) {
+  const onScroll = () => {
+    const scrollY = window.scrollY;
+    const shift = scrollY * 0.12;
+    cardWrap.style.transform = `translateY(${-12 - shift}px)`;
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const heroSection = document.querySelector(".hero");
+  if (heroSection) {
+    heroSection.addEventListener("mousemove", (e) => {
+      const rect = parallaxCard.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
+      const rotX = (-dy * 6).toFixed(2);
+      const rotY = (dx * 6).toFixed(2);
+      parallaxCard.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
+    });
+
+    heroSection.addEventListener("mouseleave", () => {
+      parallaxCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+    });
+  }
+
+  if (window.matchMedia("(max-width: 980px)").matches) {
+    cardWrap.style.transform = "none";
+  }
+}
+
+// ===========================
+// TERMINAL TYPING ANIMATION
+// ===========================
+const terminalBody = document.querySelector(".terminal-body");
+if (terminalBody) {
+  const lines = Array.from(terminalBody.children);
+  lines.forEach((line, i) => {
+    line.style.opacity = "0";
+    setTimeout(() => {
+      line.style.transition = "opacity 0.3s ease";
+      line.style.opacity = "1";
+    }, 400 + i * 90);
+  });
+}
+
+// ===========================
+// SKILL TAGS — stagger on reveal
+// ===========================
+const skillGroups = document.querySelectorAll(".skill-group");
+skillGroups.forEach((group) => {
+  const tags = group.querySelectorAll(".skill-tags span");
+  tags.forEach((tag, i) => {
+    tag.style.transitionDelay = `${i * 60}ms`;
+  });
+});
