@@ -7,7 +7,11 @@ const themeToggle = document.querySelector(".theme-toggle");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const revealItems = document.querySelectorAll(".reveal");
 const sections = document.querySelectorAll("main section[id]");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// ===========================
+// THEME
+// ===========================
 const applyTheme = (theme) => {
   if (theme === "light") {
     root.setAttribute("data-theme", "light");
@@ -41,6 +45,9 @@ if (themeToggle) {
   });
 }
 
+// ===========================
+// MOBILE NAV
+// ===========================
 if (navToggle) {
   navToggle.addEventListener("click", () => {
     const isOpen = body.classList.toggle("nav-open");
@@ -60,13 +67,90 @@ if (navToggle) {
   });
 }
 
+// ===========================
+// SCROLL PROGRESS BAR
+// ===========================
+const progressBar = document.getElementById("scroll-progress");
+if (progressBar) {
+  const updateProgress = () => {
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+    progressBar.style.width = pct + "%";
+  };
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+}
+
+// ===========================
+// CURSOR SPOTLIGHT
+// ===========================
+const spotlight = document.querySelector(".cursor-spotlight");
+if (spotlight && !prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
+  let visible = false;
+  let rafId = null;
+  let curX = 0, curY = 0;
+
+  const moveSpotlight = () => {
+    spotlight.style.transform = `translate(${curX - 300}px, ${curY - 300}px)`;
+    rafId = null;
+  };
+
+  document.addEventListener("mousemove", (e) => {
+    curX = e.clientX;
+    curY = e.clientY;
+    if (!rafId) rafId = requestAnimationFrame(moveSpotlight);
+    if (!visible) {
+      spotlight.style.opacity = "1";
+      visible = true;
+    }
+  });
+
+  document.addEventListener("mouseleave", () => {
+    spotlight.style.opacity = "0";
+    visible = false;
+  });
+}
+
+// ===========================
+// STAGGER SETUP
+// ===========================
+
+// Hero elements cascade in one by one
+const heroReveals = Array.from(document.querySelectorAll(".hero .reveal"));
+heroReveals.forEach((el, i) => {
+  if (!el.dataset.staggerDelay) {
+    el.dataset.staggerDelay = String(i * 80);
+  }
+});
+
+// Grid sections stagger children
+[".projects-bento", ".skills-panel", ".writing-grid", ".timeline"].forEach((sel) => {
+  const container = document.querySelector(sel);
+  if (!container) return;
+  container.querySelectorAll(".reveal").forEach((el, i) => {
+    el.dataset.staggerDelay = String(i * 120);
+  });
+});
+
+// ===========================
+// REVEAL ANIMATIONS
+// ===========================
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
+        const el = entry.target;
+        const delay = prefersReducedMotion
+          ? 0
+          : parseInt(el.dataset.staggerDelay || "0");
+        if (delay > 0) {
+          setTimeout(() => el.classList.add("is-visible"), delay);
+        } else {
+          el.classList.add("is-visible");
+        }
+        observer.unobserve(el);
       });
     },
     { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
@@ -80,8 +164,10 @@ if ("IntersectionObserver" in window) {
         if (!entry.isIntersecting) return;
         const currentId = entry.target.id;
         navLinks.forEach((link) => {
-          const isMatch = link.getAttribute("href") === `#${currentId}`;
-          link.classList.toggle("active", isMatch);
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${currentId}`
+          );
         });
       });
     },
@@ -121,7 +207,8 @@ if (parallaxCard && cardWrap) {
     });
 
     heroSection.addEventListener("mouseleave", () => {
-      parallaxCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+      parallaxCard.style.transform =
+        "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
     });
   }
 
@@ -134,7 +221,7 @@ if (parallaxCard && cardWrap) {
 // TERMINAL TYPING ANIMATION
 // ===========================
 const terminalBody = document.querySelector(".terminal-body");
-if (terminalBody) {
+if (terminalBody && !prefersReducedMotion) {
   const lines = Array.from(terminalBody.children);
   lines.forEach((line, i) => {
     line.style.opacity = "0";
@@ -146,12 +233,91 @@ if (terminalBody) {
 }
 
 // ===========================
+// HERO EYEBROW TYPEWRITER
+// ===========================
+const eyebrowType = document.querySelector("#hero-eyebrow .eyebrow-type");
+const eyebrowFull = " Engineering Student · Builder · Writer";
+
+if (eyebrowType) {
+  if (prefersReducedMotion) {
+    eyebrowType.textContent = eyebrowFull;
+  } else {
+    eyebrowType.textContent = "";
+    setTimeout(() => {
+      let i = 0;
+      const tick = () => {
+        if (i < eyebrowFull.length) {
+          eyebrowType.textContent += eyebrowFull[i];
+          i++;
+          setTimeout(tick, 38);
+        }
+      };
+      tick();
+    }, 650);
+  }
+}
+
+// ===========================
 // SKILL TAGS — stagger on reveal
 // ===========================
-const skillGroups = document.querySelectorAll(".skill-group");
-skillGroups.forEach((group) => {
-  const tags = group.querySelectorAll(".skill-tags span");
-  tags.forEach((tag, i) => {
+document.querySelectorAll(".skill-group").forEach((group) => {
+  group.querySelectorAll(".skill-tags span").forEach((tag, i) => {
     tag.style.transitionDelay = `${i * 60}ms`;
+  });
+});
+
+// ===========================
+// FLOATING BACK TO TOP
+// ===========================
+const backTopFloat = document.getElementById("back-top-float");
+if (backTopFloat) {
+  const hero = document.querySelector(".hero");
+  const updateFloat = () => {
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 400;
+    backTopFloat.classList.toggle("visible", heroBottom < 0);
+  };
+  window.addEventListener("scroll", updateFloat, { passive: true });
+  backTopFloat.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ===========================
+// COPY TO CLIPBOARD
+// ===========================
+document.querySelectorAll(".copy-btn").forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const text = btn.dataset.copy;
+    const original = btn.innerHTML;
+
+    const showCopied = () => {
+      btn.classList.add("copied");
+      btn.innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = original;
+      }, 2000);
+    };
+
+    try {
+      await navigator.clipboard.writeText(text);
+      showCopied();
+    } catch {
+      try {
+        const ta = Object.assign(document.createElement("textarea"), {
+          value: text,
+        });
+        ta.style.cssText = "position:fixed;opacity:0;pointer-events:none";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showCopied();
+      } catch {
+        // silently fail
+      }
+    }
   });
 });

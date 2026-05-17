@@ -1663,6 +1663,129 @@
     .contact-link-label { min-width: unset; }
   }
   
+  /* ===========================
+     SCROLL PROGRESS BAR
+     =========================== */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--violet), var(--green), var(--cyan));
+    z-index: 200;
+    pointer-events: none;
+    border-radius: 0 2px 2px 0;
+    transition: width 0.08s linear;
+  }
+
+  /* ===========================
+     CURSOR SPOTLIGHT
+     =========================== */
+  .cursor-spotlight {
+    position: fixed;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(181,122,255,0.055) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+    top: 0; left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    will-change: transform;
+  }
+
+  [data-theme="light"] .cursor-spotlight {
+    background: radial-gradient(circle, rgba(124,58,237,0.04) 0%, transparent 65%);
+  }
+
+  @media (hover: none) { .cursor-spotlight { display: none; } }
+
+  /* ===========================
+     CUSTOM SCROLLBAR
+     =========================== */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* ===========================
+     TEXT SELECTION
+     =========================== */
+  ::selection { background: rgba(181, 122, 255, 0.3); color: #e8eaf0; }
+  [data-theme="light"] ::selection { background: rgba(124, 58, 237, 0.2); color: #0d0f18; }
+
+  /* ===========================
+     HERO EYEBROW TYPEWRITER
+     =========================== */
+  .eyebrow-type { display: inline; }
+
+  /* ===========================
+     FLOATING BACK TO TOP
+     =========================== */
+  .back-top-float {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--surface-strong);
+    border: 1px solid var(--border-2);
+    color: var(--text-2);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 40;
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+    transition: opacity var(--t), transform var(--t), border-color var(--t), color var(--t), box-shadow var(--t);
+    pointer-events: none;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+  }
+
+  .back-top-float.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .back-top-float:hover {
+    border-color: var(--border-accent);
+    color: var(--accent);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px) scale(1);
+  }
+
+  @media (max-width: 560px) {
+    .back-top-float { bottom: 1.25rem; right: 1.25rem; width: 38px; height: 38px; }
+  }
+
+  /* ===========================
+     COPY EMAIL BUTTON
+     =========================== */
+  .contact-link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .contact-link-row .contact-link { flex: 1; }
+
+  .copy-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; flex-shrink: 0;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-3);
+    transition: all var(--t);
+    cursor: pointer;
+  }
+
+  .copy-btn:hover { border-color: var(--border-accent); color: var(--accent); background: var(--green-dim); }
+  .copy-btn.copied { border-color: #28c840; color: #28c840; background: rgba(40,200,64,0.1); }
+
+  @media (max-width: 560px) {
+    .copy-btn { display: none; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
