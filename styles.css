@@ -1336,9 +1336,9 @@
   /* ===========================
      TIMELINE
      =========================== */
-  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
   
-  .tl-item { display: grid; grid-template-columns: 100px 48px 1fr; align-items: start; gap: 0; }
+  .tl-item { display: grid; grid-template-columns: 100px 48px 1fr; align-items: start; gap: 0; min-width: 0; }
   
   .tl-left { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-end; padding-top: 1.3rem; padding-right: 1.25rem; gap: 0.4rem; }
   
@@ -1348,11 +1348,11 @@
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.008em;
     background: var(--green-dim);
     border: 1px solid rgba(181,122,255,0.2);
     padding: 0.2rem 0.5rem;
-    border-radius: 999px;
+    border-radius: 1000px;
     white-space: nowrap;
   }
   
@@ -1417,6 +1417,9 @@
     transition: border-color var(--t), box-shadow var(--t), transform var(--t);
     position: relative;
     overflow: hidden;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .tl-card::before {
@@ -1602,11 +1605,11 @@
     .project-card:nth-child(3),
     .project-card:nth-child(4) { grid-column: span 12; }
 
-    .tl-item { grid-template-columns: 0 36px 1fr; }
+    .tl-item { grid-template-columns: 0 36px 1fr; min-width: 0; }
     .tl-left { display: none; }
-    .tl-card { padding: 1.1rem 1.25rem; margin-left: 0.6rem; margin-bottom: 1rem; }
+    .tl-card { padding: 1.1rem 1.25rem; margin-left: 0.6rem; margin-bottom: 1rem; max-width: 100%; }
     .tl-card h3 { font-size: 1rem; }
-    .tl-meta { font-size: 0.65rem; }
+    .tl-meta { font-size: 0.65rem; flex-wrap: wrap; }
   
     .contact-wrap { padding: 1.5rem; gap: 1.5rem; }
     .contact-link { padding: 0.85rem 1rem; }
