@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing my work, projects, and writing at the intersection of **technology, AI, and storytelling**.
 
-🔗 Live Site: https://marvelcodeX.github.io
+# 🔗 Live Site: https://marvelcodeX.github.io
 
 ---
 
