@@ -158,7 +158,7 @@ window.addEventListener("resize", requestActiveNavUpdate);
 updateActiveNav();
 
 // ===========================
-// PARALLAX CARD
+// HERO CARD SCROLL OFFSET
 // ===========================
 const parallaxCard = document.getElementById("parallax-card");
 const cardWrap = parallaxCard ? parallaxCard.closest(".hero-card-wrap") : null;
@@ -166,19 +166,6 @@ if (parallaxCard && cardWrap) {
   window.addEventListener("scroll", () => {
     cardWrap.style.transform = `translateY(${-12 - window.scrollY * 0.12}px)`;
   }, { passive: true });
-
-  const heroSection = document.querySelector(".hero");
-  if (heroSection) {
-    heroSection.addEventListener("mousemove", (e) => {
-      const rect = parallaxCard.getBoundingClientRect();
-      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
-      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
-      parallaxCard.style.transform = `perspective(900px) rotateX(${(-dy * 6).toFixed(2)}deg) rotateY(${(dx * 6).toFixed(2)}deg) scale(1.02)`;
-    });
-    heroSection.addEventListener("mouseleave", () => {
-      parallaxCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
-    });
-  }
   if (window.matchMedia("(max-width: 980px)").matches) cardWrap.style.transform = "none";
 }
 
