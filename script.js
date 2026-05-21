@@ -8,6 +8,37 @@ const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const revealItems = document.querySelectorAll(".reveal");
 const sections = document.querySelectorAll("main section[id]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let activeNavRaf = null;
+
+const updateActiveNav = () => {
+  const marker = Math.min(window.innerHeight * 0.35, 260);
+  let activeId = "";
+
+  sections.forEach((section) => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= marker && rect.bottom > marker) activeId = section.id;
+  });
+
+  if (!activeId) {
+    const passedSections = Array.from(sections).filter((section) => section.getBoundingClientRect().top <= marker);
+    activeId = passedSections.length ? passedSections[passedSections.length - 1].id : "";
+  }
+
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (window.scrollY >= maxScroll - 2) activeId = sections[sections.length - 1]?.id || activeId;
+
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+  });
+};
+
+const requestActiveNavUpdate = () => {
+  if (activeNavRaf) return;
+  activeNavRaf = requestAnimationFrame(() => {
+    activeNavRaf = null;
+    updateActiveNav();
+  });
+};
 
 // ===========================
 // THEME
@@ -118,21 +149,13 @@ if ("IntersectionObserver" in window) {
     { threshold: 0.14, rootMargin: "0px 0px -40px 0px" }
   );
   revealItems.forEach((item) => revealObserver.observe(item));
-
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${id}`));
-      });
-    },
-    { threshold: 0.35, rootMargin: "-15% 0px -45% 0px" }
-  );
-  sections.forEach((s) => sectionObserver.observe(s));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+window.addEventListener("scroll", requestActiveNavUpdate, { passive: true });
+window.addEventListener("resize", requestActiveNavUpdate);
+updateActiveNav();
 
 // ===========================
 // PARALLAX CARD
