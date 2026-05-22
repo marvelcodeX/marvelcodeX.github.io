@@ -266,6 +266,33 @@
     align-items: center;
     gap: 0.75rem;
   }
+
+  .resume-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.9rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-2);
+    background: var(--green-dim);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color var(--t), color var(--t), background var(--t), transform var(--t);
+  }
+
+  .resume-link:hover {
+    border-color: var(--border-accent);
+    color: var(--text);
+    background: var(--surface-strong);
+    transform: translateY(-1px);
+  }
+
+  .nav-resume-mobile { display: none !important; }
   
   /* Theme toggle */
   .theme-toggle {
@@ -1532,7 +1559,7 @@
   .footer-shell p, .footer-shell a { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-3); }
   .back-top { transition: color var(--t); }
   .back-top:hover { color: var(--accent); }
-  
+
   /* ===========================
      REVEAL ANIMATIONS
      =========================== */
@@ -1545,6 +1572,7 @@
      RESPONSIVE
      =========================== */
   @media (max-width: 1100px) {
+    .resume-link { display: none; }
     .skills-panel { grid-template-columns: 1fr 1fr; }
     .project-card:nth-child(1),
     .project-card:nth-child(2),
@@ -1584,7 +1612,9 @@
     }
   
     .js .site-nav a { border-radius: var(--radius); padding: 0.85rem 1rem; font-size: 0.95rem; }
+    .js .site-nav .nav-resume-mobile { display: flex !important; color: var(--accent); }
     .js .nav-open .site-nav { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .resume-link { display: none; }
   
     .hero { padding-top: 4rem; padding-bottom: 4rem; }
     .hero-slice-line, .hero-slice { display: none; }
