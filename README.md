@@ -43,6 +43,7 @@ This portfolio reflects how I approach building and thinking:
 ├── index.html
 ├── styles.css
 ├── script.js
+├── Niveditha_Resume.pdf
 └── README.md
 ```
 
