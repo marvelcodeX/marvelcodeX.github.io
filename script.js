@@ -8,7 +8,13 @@ const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const revealItems = document.querySelectorAll(".reveal");
 const sections = document.querySelectorAll("main section[id]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-let activeNavRaf = null;
+const progressBar = document.getElementById("scroll-progress");
+const parallaxCard = document.getElementById("parallax-card");
+const cardWrap = parallaxCard ? parallaxCard.closest(".hero-card-wrap") : null;
+const backTopFloat = document.getElementById("back-top-float");
+const hero = document.querySelector(".hero");
+const cardOffsetMedia = window.matchMedia("(max-width: 980px)");
+let scrollRaf = null;
 
 const updateActiveNav = () => {
   const marker = Math.min(window.innerHeight * 0.35, 260);
@@ -28,15 +34,41 @@ const updateActiveNav = () => {
   if (window.scrollY >= maxScroll - 2) activeId = sections[sections.length - 1]?.id || activeId;
 
   navLinks.forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+    const isActive = link.getAttribute("href") === `#${activeId}`;
+    link.classList.toggle("active", isActive);
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
   });
 };
 
-const requestActiveNavUpdate = () => {
-  if (activeNavRaf) return;
-  activeNavRaf = requestAnimationFrame(() => {
-    activeNavRaf = null;
-    updateActiveNav();
+const updateProgress = () => {
+  if (!progressBar) return;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + "%";
+};
+
+const updateHeroCardOffset = () => {
+  if (!cardWrap) return;
+  cardWrap.style.transform = cardOffsetMedia.matches ? "none" : `translateY(${-12 - window.scrollY * 0.12}px)`;
+};
+
+const updateBackTop = () => {
+  if (!backTopFloat) return;
+  backTopFloat.classList.toggle("visible", hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 400);
+};
+
+const updateScrollEffects = () => {
+  updateProgress();
+  updateActiveNav();
+  updateHeroCardOffset();
+  updateBackTop();
+};
+
+const requestScrollEffectsUpdate = () => {
+  if (scrollRaf) return;
+  scrollRaf = requestAnimationFrame(() => {
+    scrollRaf = null;
+    updateScrollEffects();
   });
 };
 
@@ -84,19 +116,6 @@ if (navToggle) {
       navToggle.setAttribute("aria-label", "Open navigation menu");
     });
   });
-}
-
-// ===========================
-// SCROLL PROGRESS BAR
-// ===========================
-const progressBar = document.getElementById("scroll-progress");
-if (progressBar) {
-  const updateProgress = () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + "%";
-  };
-  window.addEventListener("scroll", updateProgress, { passive: true });
-  updateProgress();
 }
 
 // ===========================
@@ -153,21 +172,9 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-window.addEventListener("scroll", requestActiveNavUpdate, { passive: true });
-window.addEventListener("resize", requestActiveNavUpdate);
-updateActiveNav();
-
-// ===========================
-// HERO CARD SCROLL OFFSET
-// ===========================
-const parallaxCard = document.getElementById("parallax-card");
-const cardWrap = parallaxCard ? parallaxCard.closest(".hero-card-wrap") : null;
-if (parallaxCard && cardWrap) {
-  window.addEventListener("scroll", () => {
-    cardWrap.style.transform = `translateY(${-12 - window.scrollY * 0.12}px)`;
-  }, { passive: true });
-  if (window.matchMedia("(max-width: 980px)").matches) cardWrap.style.transform = "none";
-}
+window.addEventListener("scroll", requestScrollEffectsUpdate, { passive: true });
+window.addEventListener("resize", requestScrollEffectsUpdate);
+updateScrollEffects();
 
 // ===========================
 // TERMINAL TYPING ANIMATION
@@ -218,12 +225,7 @@ document.querySelectorAll(".skill-group").forEach((group) => {
 // ===========================
 // FLOATING BACK TO TOP
 // ===========================
-const backTopFloat = document.getElementById("back-top-float");
 if (backTopFloat) {
-  const hero = document.querySelector(".hero");
-  window.addEventListener("scroll", () => {
-    backTopFloat.classList.toggle("visible", hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 400);
-  }, { passive: true });
   backTopFloat.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
