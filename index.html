@@ -3,8 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Niveditha | Portfolio</title>
-    <meta name="description" content="Personal portfolio of Niveditha Jayakumar, an engineering student building thoughtful technology and writing about ideas." />
+    <title>Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio</title>
+    <meta name="description" content="Portfolio of Niveditha Jayakumar — an engineering student building AI and cybersecurity tools across cloud security, digital forensics, and local LLMs, and writing about technology and ideas." />
+    <link rel="canonical" href="https://marvelcodeX.github.io/" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <!-- Open Graph / social share card -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Niveditha Jayakumar" />
+    <meta property="og:title" content="Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio" />
+    <meta property="og:description" content="Engineering student building AI and cybersecurity tools — cloud security, digital forensics, and local LLMs — plus essays on technology and ideas." />
+    <meta property="og:url" content="https://marvelcodeX.github.io/" />
+    <meta property="og:image" content="https://marvelcodeX.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Niveditha Jayakumar — Portfolio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio" />
+    <meta name="twitter:description" content="Engineering student building AI and cybersecurity tools — cloud security, digital forensics, and local LLMs — plus essays on technology and ideas." />
+    <meta name="twitter:image" content="https://marvelcodeX.github.io/og-image.png" />
+
     <script>
       (() => {
         const savedTheme = localStorage.getItem("theme");
@@ -27,7 +50,50 @@
     <div class="bg-glow glow-1" aria-hidden="true"></div>
     <div class="bg-glow glow-2" aria-hidden="true"></div>
     <div class="bg-glow glow-3" aria-hidden="true"></div>
+    <canvas class="bg-network" id="net-canvas" aria-hidden="true"></canvas>
     <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- NODE-GRAPH EXPLORER (progressive enhancement; hidden without JS) -->
+    <div id="explorer" aria-label="Interactive portfolio map">
+      <div class="explorer-bar">
+        <a class="brand" href="#home">
+          <span class="brand-bracket">[</span>Niveditha Jayakumar<span class="brand-bracket">]</span>
+        </a>
+        <span class="explorer-hint" aria-hidden="true">drag to pan · scroll to zoom · click a node</span>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+            <span class="toggle-icon sun">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </span>
+            <span class="toggle-icon moon">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="graph-viewport" id="graph-viewport">
+        <div class="graph-world" id="graph-world">
+          <svg class="graph-edges" id="graph-edges" aria-hidden="true"></svg>
+          <!-- nodes injected by script.js -->
+        </div>
+      </div>
+      <div class="graph-controls" aria-label="Map controls">
+        <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+        <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+        <button type="button" data-zoom="reset" aria-label="Reset view">⟲</button>
+      </div>
+    </div>
+
+    <!-- SECTION PANEL (host for a section when its node is opened) -->
+    <div id="panel" aria-hidden="true">
+      <div class="panel-inner">
+        <div class="panel-bar">
+          <button class="panel-close" type="button">← back</button>
+        </div>
+        <div class="panel-host" id="panel-host"></div>
+      </div>
+    </div>
 
     <!-- HEADER -->
     <header class="site-header">
@@ -39,8 +105,8 @@
         <nav class="site-nav" id="site-nav" aria-label="Main navigation">
           <a href="#about"><span class="nav-num">01.</span>About</a>
           <a href="#projects"><span class="nav-num">02.</span>Projects</a>
-          <a href="#writing"><span class="nav-num">03.</span>Writing</a>
-          <a href="#skills"><span class="nav-num">04.</span>Skills</a>
+          <a href="#skills"><span class="nav-num">03.</span>Skills</a>
+          <a href="#writing"><span class="nav-num">04.</span>Writing</a>
           <a href="#timeline"><span class="nav-num">05.</span>Journey</a>
           <a href="#contact"><span class="nav-num">06.</span>Contact</a>
           <a class="nav-resume-mobile" href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
@@ -70,8 +136,7 @@
 
     <main id="home">
 
-      <!-- HERO -->
-      <section class="hero section">
+<section class="hero section" id="hero">
         <div class="hero-slice" aria-hidden="true"></div>
         <div class="hero-slice-line" aria-hidden="true"></div>
 
@@ -87,7 +152,7 @@
             </h1>
 
             <p class="hero-text reveal">
-              I love to build and write about technology,<br>stories, and ideas.
+              I love building and writing about technology,<br>stories, and ideas.
             </p>
 
             <div class="hero-actions reveal">
@@ -101,7 +166,7 @@
             </div>
 
             <ul class="hero-tags reveal" aria-label="Highlights">
-              <li>AI with empathy</li>
+              <li>Secure AI Systems</li>
               <li>Hackathon-built ideas</li>
               <li>Stories behind systems</li>
             </ul>
@@ -121,7 +186,7 @@
                 <a class="activity-item" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer">
                   <span class="activity-tag tag-project">project</span>
                   <div class="activity-body">
-                    <span class="activity-title">Storeria-AI</span>
+                    <span class="activity-title">Soteria-AI</span>
                     <span class="activity-sub">AI · Dependency Risk Analysis</span>
                   </div>
                   <span class="activity-time">ongoing ↗</span>
@@ -138,18 +203,18 @@
                   <span class="activity-tag tag-write">writing</span>
                   <div class="activity-body">
                     <span class="activity-title">Essays on Substack & Medium</span>
-                    <span class="activity-sub">Technology, philosophy, and ideas</span>
+                    <span class="activity-sub">Cybersecurity, emerging technologies, and ideas</span>
                   </div>
                   <span class="activity-time">ongoing ↗</span>
                 </a>
-                <a class="activity-item" target="_blank" rel="noreferrer">
+                <div class="activity-item">
                   <span class="activity-tag tag-focus">learn</span>
                   <div class="activity-body">
                     <span class="activity-title">Cybersecurity Roadmap</span>
                     <span class="activity-sub">Blue Team • Cloud Security</span>
                   </div>
                   <span class="activity-time"></span>
-                </a>
+                </div>
               </div>
             </div>
             <span class="corner-mark cm-tl" aria-hidden="true"></span>
@@ -160,8 +225,7 @@
         </div>
       </section>
 
-      <!-- ABOUT — Terminal + Stat Cards -->
-      <section class="section" id="about">
+<section class="section" id="about">
         <div class="container">
           <div class="section-heading reveal">
             <p class="eyebrow"><span class="eyebrow-num">// 01</span> About</p>
@@ -291,123 +355,145 @@
         </div>
       </section>
 
-      <!-- PROJECTS — Bento Grid -->
-      <section class="section" id="projects">
+<section class="section" id="projects">
         <div class="container">
           <div class="section-heading reveal">
             <p class="eyebrow"><span class="eyebrow-num">// 02</span> Projects</p>
             <h2>Work that reflects what I care about.</h2>
           </div>
 
-          <!-- NEW PROJECT 01: Soteria-AI -->
-          <div class="projects-bento">
-            <article class="project-card reveal">
-              <div class="project-index">01</div>
-              <div class="project-inner">
-                <p class="project-label">AI + SOFTWARE SECURITY</p>
+          <ol class="projects-log">
+            <li class="log-entry reveal">
+              <div class="log-rail">
+                <span class="log-num">01</span>
+                <span class="log-status status-active">ongoing</span>
+              </div>
+              <div class="log-body">
+                <p class="log-class">AI + Software Security</p>
                 <h3>Soteria-AI</h3>
-                <p>An AI-powered dependency security platform that scans project libraries for known vulnerabilities and explains security risks in plain English.</p>
-                <p>It combines vulnerability intelligence, reachability analysis, and local LLMs to help developers understand what actually matters and prioritize fixes with confidence.</p>
-                <p>Interactive dashboards, dependency visualizations, and detailed reports make security findings easier to explore and act upon.</p>
-              </div>
-              <ul class="stack-list">
-                <li>Python</li><li>FastAPI</li><li>React</li><li>Ollama</li><li>PostgreSQL</li><li>AST</li>
-              </ul>
-              <div class="project-footer">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                  GitHub
-                </a>
-                <details class="project-details">
-                  <summary>More ↓</summary>
-                  <p>This project combines AI and cybersecurity to make complex vulnerability analysis understandable for every developer.</p>
+                <p class="log-desc">An AI-powered dependency security platform that scans project libraries for known vulnerabilities and explains security risks in plain English.</p>
+                <ul class="log-stack"><li>Python</li><li>FastAPI</li><li>React</li><li>Ollama</li><li>PostgreSQL</li><li>AST</li></ul>
+                <details class="log-more">
+                  <summary>read more</summary>
+                  <p>It combines vulnerability intelligence, reachability analysis, and local LLMs to help developers understand what actually matters and prioritize fixes with confidence. Interactive dashboards, dependency visualizations, and detailed reports make security findings easier to explore and act upon.</p>
                 </details>
               </div>
-            </article>
-
-            <!-- NEW PROJECT 02: Log Forensics Tool -->
-            <article class="project-card reveal">
-              <div class="project-index">02</div>
-              <div class="project-inner">
-                <p class="project-label">DIGITAL FORENSICS + SOC</p>
+              <div class="log-actions">
+                <a class="button button-sm" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+              </div>
+            </li>
+            <li class="log-entry reveal">
+              <div class="log-rail">
+                <span class="log-num">02</span>
+                <span class="log-status status-done">shipped</span>
+              </div>
+              <div class="log-body">
+                <p class="log-class">Digital Forensics + SOC</p>
                 <h3>Log Forensics Tool</h3>
-                <p>A desktop security analysis tool that detects suspicious activity across system, authentication, and web server logs through automated threat detection.</p>
-                <p>It combines multiple detection engines, risk scoring, IP geolocation, and an interactive incident timeline to simplify forensic investigations.</p>
-              </div>
-              <ul class="stack-list">
-                <li>Python</li><li>CustomTkinter</li><li>SQLite</li><li>Syslog</li><li>Regex</li><li>Security</li>
-              </ul>
-              <div class="project-footer">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/log-forensics-tool" target="_blank" rel="noreferrer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                  GitHub
-                </a>
-                <details class="project-details">
-                  <summary>More ↓</summary>
-                  <p>This project was built as a practical tool for security analysts to investigate suspicious activity faster and with greater context.</p>
+                <p class="log-desc">A desktop security analysis tool that detects suspicious activity across system, authentication, and web server logs through automated threat detection.</p>
+                <ul class="log-stack"><li>Python</li><li>CustomTkinter</li><li>SQLite</li><li>Syslog</li><li>Regex</li><li>Security</li></ul>
+                <details class="log-more">
+                  <summary>read more</summary>
+                  <p>It combines multiple detection engines, risk scoring, IP geolocation, and an interactive incident timeline to simplify forensic investigations — built as a practical tool for security analysts to investigate faster and with greater context.</p>
                 </details>
               </div>
-            </article>
-
-
-            <!-- NEW PROJECT 03: PDF Intelligence system --> 
-            <article class="project-card reveal">
-              <div class="project-index">03</div>
-              <div class="project-inner">
-                <p class="project-label">RAG + Local LLM</p>
+              <div class="log-actions">
+                <a class="button button-sm" href="https://github.com/marvelcodeX/log-forensics-tool" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+              </div>
+            </li>
+            <li class="log-entry reveal">
+              <div class="log-rail">
+                <span class="log-num">03</span>
+                <span class="log-status status-done">shipped</span>
+              </div>
+              <div class="log-body">
+                <p class="log-class">RAG + Local LLM</p>
                 <h3>PDF Intelligence System</h3>
-                <p>A lightweight Retrieval-Augmented Generation (RAG) system that lets users query PDF documents using fully local language models.</p>
-                <p>It combines semantic search with vector embeddings and Ollama-powered inference to deliver grounded answers without cloud APIs or external services.</p>
-              </div>
-              <ul class="stack-list">
-                <li>Python</li><li>Streamlit</li><li>FAISS</li><li>Ollama</li><li>Sentence Transformers</li><li>PyMuPDF</li><li>Gradio</li>
-              </ul>
-              <div class="project-footer">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/PDF-Intelligence-System-Using-RAG" target="_blank" rel="noreferrer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                  GitHub
-                </a>
-                <details class="project-details">
-                  <summary>More ↓</summary>
-                  <p>Built to be 100% local and private — designed to work with lightweight models under 2GB like Phi-3, qwen2:1.5b, and tinyllama. Privacy-first document intelligence.</p>
+                <p class="log-desc">A lightweight Retrieval-Augmented Generation (RAG) system that lets users query PDF documents using fully local language models.</p>
+                <ul class="log-stack"><li>Python</li><li>Streamlit</li><li>FAISS</li><li>Ollama</li><li>Sentence Transformers</li><li>PyMuPDF</li><li>Gradio</li></ul>
+                <details class="log-more">
+                  <summary>read more</summary>
+                  <p>It combines semantic search with vector embeddings and Ollama-powered inference to deliver grounded answers without cloud APIs. 100% local and private — designed to run on lightweight models under 2GB like Phi-3, qwen2:1.5b, and tinyllama.</p>
                 </details>
               </div>
-            </article>
-
-            <!-- NEW PROJECT 04: CSPM -->
-            <article class="project-card reveal">
-              <div class="project-index">04</div>
-              <div class="project-inner">
-                <p class="project-label">CLOUD + CYBERSECURITY</p>
+              <div class="log-actions">
+                <a class="button button-sm" href="https://github.com/marvelcodeX/PDF-Intelligence-System-Using-RAG" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+              </div>
+            </li>
+            <li class="log-entry reveal">
+              <div class="log-rail">
+                <span class="log-num">04</span>
+                <span class="log-status status-active">ongoing</span>
+              </div>
+              <div class="log-body">
+                <p class="log-class">Cloud + Cybersecurity</p>
                 <h3>Cloud Security Posture Manager</h3>
-                <p>A full-stack cloud security platform that analyzes uploaded cloud configurations and emulated AWS environments for security misconfigurations.</p>
-                <p>Built around benchmark-driven rule engines, compliance mapping, and machine learning to identify risks, prioritize findings, and visualize potential attack paths.</p>
-                <p>Designed to help developers and security teams understand cloud risks before they become security incidents.</p>
-              </div>
-              <ul class="stack-list">
-                <li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>NetworkX</li>
-              </ul>
-              <div class="project-footer">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                  GitHub
-                </a>
-                <details class="project-details">
-                  <summary>More ↓</summary>
-                  <p>This project reflects my interest in cloud security, secure systems, and building tools that prevent problems before they become incidents.</p>
+                <p class="log-desc">A full-stack cloud security platform that analyzes uploaded cloud configurations and emulated AWS environments for security misconfigurations.</p>
+                <ul class="log-stack"><li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>NetworkX</li></ul>
+                <details class="log-more">
+                  <summary>read more</summary>
+                  <p>Built around benchmark-driven rule engines, compliance mapping, and machine learning to identify risks, prioritize findings, and visualize potential attack paths — helping teams understand cloud risks before they become incidents.</p>
                 </details>
               </div>
-            </article>
-            
+              <div class="log-actions">
+                <a class="button button-sm" href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+<section class="section" id="skills">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow"><span class="eyebrow-num">// 03</span> Skills</p>
+            <h2>The tools I come back to most often.</h2>
+          </div>
+          <div class="cap-matrix reveal">
+            <div class="cap-row">
+              <div class="cap-key"><span class="cap-cat">Languages</span><span class="cap-count">06</span></div>
+              <div class="cap-vals"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>C</span><span>SQL</span></div>
+            </div>
+            <div class="cap-row">
+              <div class="cap-key"><span class="cap-cat">Frameworks &amp; Libraries</span><span class="cap-count">07</span></div>
+              <div class="cap-vals"><span>Flask</span><span>Gradio</span><span>Streamlit</span><span>Hugging Face Transformers</span><span>spaCy</span><span>Pandas</span><span>NumPy</span></div>
+            </div>
+            <div class="cap-row">
+              <div class="cap-key"><span class="cap-cat">Databases</span><span class="cap-count">03</span></div>
+              <div class="cap-vals"><span>MySQL</span><span>SQLite</span><span>MongoDB</span></div>
+            </div>
+            <div class="cap-row">
+              <div class="cap-key"><span class="cap-cat">Tools &amp; Technologies</span><span class="cap-count">04</span></div>
+              <div class="cap-vals"><span>Git &amp; GitHub</span><span>VS Code</span><span>MetaMask</span><span>Web3</span></div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- WRITING — Magazine layout with marquee -->
-      <section class="section" id="writing">
+<section class="section" id="care">
+        <div class="container">
+          <div class="care-band reveal">
+            <div class="care-number">
+              <!-- Heart icon -->
+              <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <div class="care-content">
+              <div class="care-label">Currently Exploring</div>
+              <p>Lately I've been spending most of my time learning about AI-assisted security, cloud infrastructure, digital forensics, Retrieval-Augmented Generation, and backend systems. I'm particularly interested in building software that combines intelligent automation with practical engineering.</p>
+              <div class="care-tags">
+                <span class="care-tag">AI Security</span>
+                <span class="care-tag">Cloud</span>
+                <span class="care-tag">LLMs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<section class="section" id="writing">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 03</span> Writing</p>
+            <p class="eyebrow"><span class="eyebrow-num">// 04</span> Writing</p>
             <h2>I write about the questions technology leaves behind.</h2>
           </div>
 
@@ -415,16 +501,16 @@
           <div class="writing-marquee-wrap reveal">
             <div class="writing-marquee" aria-hidden="true">
               <div class="writing-marquee-track">
-                <span class="marquee-item">Technology</span>
-                <span class="marquee-item">Philosophy</span>
+                <span class="marquee-item">Emerging Technologies</span>
+                <span class="marquee-item">Cybersecurity</span>
                 <span class="marquee-item">Storytelling</span>
                 <span class="marquee-item">AI & Ethics</span>
                 <span class="marquee-item">Human Systems</span>
                 <span class="marquee-item">Ideas Worth Building</span>
                 <span class="marquee-item">The Future</span>
                 <span class="marquee-item">Curiosity</span>
-                <span class="marquee-item">Technology</span>
-                <span class="marquee-item">Philosophy</span>
+                <span class="marquee-item">Emerging Technologies</span>
+                <span class="marquee-item">Cybersecurity</span>
                 <span class="marquee-item">Storytelling</span>
                 <span class="marquee-item">AI & Ethics</span>
                 <span class="marquee-item">Human Systems</span>
@@ -433,16 +519,16 @@
                 <span class="marquee-item">Curiosity</span>
               </div>
               <div class="writing-marquee-track" aria-hidden="true">
-                <span class="marquee-item">Technology</span>
-                <span class="marquee-item">Philosophy</span>
+                <span class="marquee-item">Emerging Technologies</span>
+                <span class="marquee-item">Cybersecurity</span>
                 <span class="marquee-item">Storytelling</span>
                 <span class="marquee-item">AI & Ethics</span>
                 <span class="marquee-item">Human Systems</span>
                 <span class="marquee-item">Ideas Worth Building</span>
                 <span class="marquee-item">The Future</span>
                 <span class="marquee-item">Curiosity</span>
-                <span class="marquee-item">Technology</span>
-                <span class="marquee-item">Philosophy</span>
+                <span class="marquee-item">Emerging Technologies</span>
+                <span class="marquee-item">Cybersecurity</span>
                 <span class="marquee-item">Storytelling</span>
                 <span class="marquee-item">AI & Ethics</span>
                 <span class="marquee-item">Human Systems</span>
@@ -464,7 +550,7 @@
               <div class="writing-body">
                 <div class="writing-platform">Substack</div>
                 <h3>Essays & Deep Dives</h3>
-                <p>I write about technology, philosophy, and ideas that make us think.</p>
+                <p>I write about emerging technologies, cybersecurity, and ideas that make us think.</p>
                 <a class="text-link" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">
                   Read on Substack
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -492,142 +578,54 @@
         </div>
       </section>
 
-      <!-- SKILLS — Panel with icons -->
-      <section class="section" id="skills">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 04</span> Skills</p>
-            <h2>The tools I come back to most often.</h2>
-          </div>
-          <div class="skills-panel">
-            <div class="skill-group reveal">
-              <div class="skill-group-header">
-                <div class="skill-group-icon">
-                  <!-- Globe / frontend icon -->
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </div>
-                <span class="skill-category">Languages</span>
-                <span class="skill-count">6 tools</span>
-              </div>
-              <div class="skill-tags"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>C</span><span>SQL</span></div>
-            </div>
-            <div class="skill-group reveal">
-              <div class="skill-group-header">
-                <div class="skill-group-icon">
-                  <!-- Server / backend icon -->
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
-                </div>
-                <span class="skill-category">Frameworks & Libraries</span>
-                <span class="skill-count">7 tools</span>
-              </div>
-              <div class="skill-tags"><span>Flask</span><span>Gradio</span><span>Streamlit</span><span>Hugging Face Transformers</span><span>spaCy</span><span>Pandas</span><span>NumPy</span></div>
-            </div>
-            <div class="skill-group reveal">
-              <div class="skill-group-header">
-                <div class="skill-group-icon">
-                  <!-- Database icon -->
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-                </div>
-                <span class="skill-category">Database</span>
-                <span class="skill-count">3 tool</span>
-              </div>
-              <div class="skill-tags"><span>MySQL</span><span>SQLite</span><span>MongoDB</span></div>
-            </div>
-            <div class="skill-group reveal">
-              <div class="skill-group-header">
-                <div class="skill-group-icon">
-                  <!-- Tool / wrench icon -->
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                </div>
-                <span class="skill-category">Tools & Technologies</span>
-                <span class="skill-count">4 tools</span>
-              </div>
-              <div class="skill-tags"><span>Git & GitHub</span><span>VS Code</span><span>MetaMask</span><span>Web3</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CURRENTLY EXPLORING — Elevated band -->
-      <section class="section" id="care">
-        <div class="container">
-          <div class="care-band reveal">
-            <div class="care-number">
-              <!-- Heart icon -->
-              <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            </div>
-            <div class="care-content">
-              <div class="care-label">Currently Exploring</div>
-              <p>Lately I've been spending most of my time learning about AI-assisted security, cloud infrastructure, digital forensics, Retrieval-Augmented Generation, and backend systems. I'm particularly interested in building software that combines intelligent automation with practical engineering.</p>
-              <div class="care-tags">
-                <span class="care-tag">AI Security</span>
-                <span class="care-tag">Cloud</span>
-                <span class="care-tag">LLMs</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TIMELINE -->
-      <section class="section" id="timeline">
+<section class="section" id="timeline">
         <div class="container">
           <div class="section-heading reveal">
             <p class="eyebrow"><span class="eyebrow-num">// 05</span> Journey</p>
             <h2>The path so far.</h2>
           </div>
-
-          <div class="timeline">
-            <article class="tl-item reveal">
-              <div class="tl-left">
-                <span class="tl-tag">LEARN</span>
-              </div>
-              <div class="tl-connector"><div class="tl-dot-wrap"><div class="tl-dot"></div></div></div>
-              <div class="tl-card">
-                <h3>Information Science and Engineering Student</h3>
-                <div class="tl-meta">
-                  <span class="tl-meta-item">Dayananda Sagar College of Engineering</span>
+          <ol class="trace">
+            <li class="trace-hop reveal">
+              <div class="trace-spine"><span class="trace-node"></span></div>
+              <div class="trace-card">
+                <div class="trace-head">
+                  <span class="trace-tag">LEARN</span>
+                  <span class="trace-hop-id">hop 01</span>
                 </div>
+                <h3>Information Science and Engineering Student</h3>
+                <div class="trace-meta"><span class="trace-meta-item">Dayananda Sagar College of Engineering</span></div>
                 <p>Learning through coursework, projects, and constant experimentation, while figuring out how engineering and storytelling can strengthen each other.</p>
               </div>
-            </article>
-
-            <article class="tl-item reveal">
-              <div class="tl-left">
-                <span class="tl-tag">CREATE</span>
-              </div>
-              <div class="tl-connector"><div class="tl-dot-wrap"><div class="tl-dot"></div></div></div>
-              <div class="tl-card">
-                <h3>Hackathon Journey</h3>
-                <div class="tl-meta">
-                  <span class="tl-meta-item">Aventus 2.0</span>
-                  <span class="tl-meta-item">Recursive</span>
-                  <span class="tl-meta-item">Aventus 3.0</span>
-                  <span class="tl-meta-item">HackCulture - WitchHunt</span>
+            </li>
+            <li class="trace-hop reveal">
+              <div class="trace-spine"><span class="trace-node"></span></div>
+              <div class="trace-card">
+                <div class="trace-head">
+                  <span class="trace-tag">CREATE</span>
+                  <span class="trace-hop-id">hop 02</span>
                 </div>
+                <h3>Hackathon Journey</h3>
+                <div class="trace-meta"><span class="trace-meta-item">Aventus 2.0</span><span class="trace-meta-item">Recursive</span><span class="trace-meta-item">Aventus 3.0</span><span class="trace-meta-item">HackCulture – WitchHunt</span></div>
                 <p>Hackathons pushed me to think quickly, collaborate honestly, and shape half-formed ideas into something real under pressure.</p>
               </div>
-            </article>
-
-            <article class="tl-item reveal">
-              <div class="tl-left">
-                <span class="tl-tag">CONTRIBUTE</span>
-              </div>
-              <div class="tl-connector"><div class="tl-dot-wrap"><div class="tl-dot"></div></div></div>
-              <div class="tl-card">
-                <h3>Creative Intern</h3>
-                <div class="tl-meta">
-                  <span class="tl-meta-item">FiniteLoop</span>
+            </li>
+            <li class="trace-hop reveal">
+              <div class="trace-spine"><span class="trace-node"></span></div>
+              <div class="trace-card">
+                <div class="trace-head">
+                  <span class="trace-tag">CONTRIBUTE</span>
+                  <span class="trace-hop-id">hop 03</span>
                 </div>
+                <h3>Creative Intern</h3>
+                <div class="trace-meta"><span class="trace-meta-item">FiniteLoop</span></div>
                 <p>Working in a space where ideas, communication, design thinking, and execution overlap in interesting ways.</p>
               </div>
-            </article>
-          </div>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <!-- CONTACT -->
-      <section class="section" id="contact">
+<section class="section" id="contact">
         <div class="container">
           <div class="contact-wrap reveal">
             <div class="contact-copy">
@@ -669,6 +667,7 @@
           </div>
         </div>
       </section>
+
     </main>
 
     <button class="back-top-float" id="back-top-float" aria-label="Back to top">

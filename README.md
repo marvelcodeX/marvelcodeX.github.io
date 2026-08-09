@@ -12,7 +12,7 @@ This portfolio reflects how I approach building and thinking:
 
 * 🤖 Human-centered AI systems
 * 🧠 Exploring technology beyond functionality
-* ✍️ Writing about ideas, philosophy, and systems
+* ✍️ Writing about emerging technologies, cybersecurity, and ideas
 * ⚡ Hackathon-driven, fast iteration mindset
 
 ---
