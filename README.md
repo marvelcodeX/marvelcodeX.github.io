@@ -10,7 +10,7 @@ A personal portfolio website showcasing my work, projects, and writing at the in
 
 This portfolio reflects how I approach building and thinking:
 
-* 🤖 Human-centered AI systems
+* 🤖 Secure AI systems
 * 🧠 Exploring technology beyond functionality
 * ✍️ Writing about emerging technologies, cybersecurity, and ideas
 * ⚡ Hackathon-driven, fast iteration mindset

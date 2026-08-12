@@ -293,9 +293,9 @@ const TERMINAL_COMMANDS = {
   projects: [
     { cls: "t-comment", text: "# featured projects" },
     { cls: "t-output", text: "01  Soteria-AI          AI dependency risk analyzer" },
-    { cls: "t-output", text: "02  Log Forensics       Desktop threat analysis tool" },
-    { cls: "t-output", text: "03  PDF Intelligence    Local RAG with Ollama + FAISS" },
-    { cls: "t-output", text: "04  CSPM Platform       Cloud security posture manager" },
+    { cls: "t-output", text: "02  CSPM Platform       Cloud security posture manager" },
+    { cls: "t-output", text: "03  Log Forensics       Desktop threat analysis tool" },
+    { cls: "t-output", text: "04  PDF Intelligence    Local RAG with Ollama + FAISS" },
   ],
 
   contact: [
@@ -598,25 +598,23 @@ if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
   if (!explorer || !world || !viewport || !panel) return;
 
   // ---- graph data ----
-  // Section nodes laid out as a hexagon so 01→06 reads CLOCKWISE from the top.
+  // Section nodes evenly spaced on a circle (60° apart), 01→06 CLOCKWISE from the top.
   const NODES = [
-    { id: "me", type: "core", label: "NIVEDITHA", sub: "Engineer · Builder · Writer", target: "hero", x: 800, y: 500 },
-    { id: "about",    type: "section", label: "ABOUT  ",    sub: "who I am",          idx: "01", target: "about",    x: 800,  y: 190 },
-    { id: "projects", type: "section", label: "PROJECTS", sub: "my work",      idx: "02", target: "projects", x: 1160, y: 350 },
-    { id: "skills",   type: "section", label: "SKILLS",   sub: "capability matrix",  idx: "03", target: "skills",   x: 1160, y: 655 },
-    { id: "writing",  type: "section", label: "WRITING",  sub: "essays",             idx: "04", target: "writing",  x: 800,  y: 815 },
-    { id: "timeline", type: "section", label: "JOURNEY",  sub: "the path so far",    idx: "05", target: "timeline", x: 440,  y: 655 },
-    { id: "contact",  type: "section", label: "CONTACT",  sub: "get in touch",       idx: "06", target: "contact",  x: 440,  y: 350 },
-    { id: "resume",   type: "leaf", label: "Résumé",   href: "Niveditha_Resume.pdf", x: 960,  y: 150 },
-    { id: "github",   type: "leaf", label: "GitHub",   href: "https://github.com/marvelcodeX", x: 1330, y: 760 },
-    { id: "substack", type: "leaf", label: "Substack", href: "https://substack.com/@nivedithajayakumar", x: 620, y: 910 },
-    { id: "linkedin", type: "leaf", label: "LinkedIn", href: "https://www.linkedin.com/in/niveditha-jayakumar/", x: 290, y: 470 },
+    { id: "me", type: "core", label: "Niveditha", sub: "engineer · builder · writer", target: "hero", x: 800, y: 500 },
+    { id: "about",    type: "section", label: "About",    sub: "who I am",          idx: "01", target: "about",    x: 800,  y: 140 },
+    { id: "projects", type: "section", label: "Projects", sub: "my work",      idx: "02", target: "projects", x: 1112, y: 320 },
+    { id: "skills",   type: "section", label: "Skills",   sub: "capability matrix",  idx: "03", target: "skills",   x: 1112, y: 680 },
+    { id: "writing",  type: "section", label: "Writing",  sub: "essays",             idx: "04", target: "writing",  x: 800,  y: 860 },
+    { id: "timeline", type: "section", label: "Journey",  sub: "the path so far",    idx: "05", target: "timeline", x: 488,  y: 680 },
+    { id: "contact",  type: "section", label: "Contact",  sub: "get in touch",       idx: "06", target: "contact",  x: 488,  y: 320 },
+    { id: "resume",   type: "leaf", label: "Résumé",   href: "Niveditha_Resume.pdf", x: 1040, y: 150 },
+    { id: "github",   type: "leaf", label: "GitHub",   href: "https://github.com/marvelcodeX", x: 1370, y: 500 },
+    { id: "substack", type: "leaf", label: "Substack", href: "https://substack.com/@nivedithajayakumar", x: 560, y: 975 },
+    { id: "linkedin", type: "leaf", label: "LinkedIn", href: "https://www.linkedin.com/in/niveditha-jayakumar/", x: 250, y: 470 },
   ];
   const EDGES = [
-    // hub spokes
+    // hub & spokes only — center connects out to each node (no outer ring)
     ["me","about"],["me","projects"],["me","skills"],["me","writing"],["me","timeline"],["me","contact"],
-    // sequence ring (01→02→03→04→05→06) so the order is visible
-    ["about","projects"],["projects","skills"],["skills","writing"],["writing","timeline"],["timeline","contact"],
     // leaves near their related section
     ["about","resume"],["projects","github"],["skills","github"],["writing","substack"],["contact","linkedin"],
   ];
@@ -733,7 +731,7 @@ if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
   const apply = () => { world.style.transform = `translate(${panX}px, ${panY}px) scale(${k})`; };
   // fit to the actual content box (nodes cluster in the middle of the world),
   // so we land zoomed-in instead of showing the empty world margins.
-  const CONTENT = { w: 1200, h: 900, cx: 800, cy: 520 };
+  const CONTENT = { w: 1240, h: 960, cx: 800, cy: 555 };
   const fit = () => {
     const r = viewport.getBoundingClientRect();
     k = Math.max(MIN_K, Math.min(1.6, r.width / CONTENT.w, r.height / CONTENT.h));
@@ -805,31 +803,20 @@ if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
 
   window.addEventListener("resize", fit);
 
-  // ---- mobile fallback: a tappable list of the same nodes (shown ≤560px via CSS) ----
-  const nodeList = document.createElement("div");
-  nodeList.id = "node-list";
-  nodeList.setAttribute("aria-label", "Portfolio sections");
-  NODES.forEach((n) => {
-    const isLeaf = n.type === "leaf";
-    const isCore = n.type === "core";
-    const el = document.createElement(isLeaf ? "a" : "button");
-    el.className = "nlist-item" + (isCore ? " nlist-core" : "") + (isLeaf ? " nlist-leaf" : "");
-    if (isLeaf) { el.href = n.href; el.target = "_blank"; el.rel = "noreferrer"; }
-    else { el.type = "button"; }
-    const idx = isCore ? "⌂" : (n.idx || "•");
-    const label = isCore ? "Home" : n.label;
-    el.innerHTML =
-      `<span class="nlist-idx">${idx}</span>` +
-      `<span class="nlist-body"><span class="nlist-label">${label}</span>` +
-      (n.sub ? `<span class="nlist-sub">${n.sub}</span>` : "") + `</span>` +
-      `<span class="nlist-arrow" aria-hidden="true">${isLeaf ? "↗" : "→"}</span>`;
-    if (!isLeaf) el.addEventListener("click", () => openPanel(n.target, el));
-    nodeList.appendChild(el);
-  });
-  explorer.insertBefore(nodeList, explorer.querySelector(".graph-controls"));
-
-  // ---- init: the map is the whole site ----
-  document.body.classList.add("graph-ready", "map-view");
-  fit();
-  openFromHash();
+  // ---- mode: node-graph on desktop, normal linear scrolling site on phones ----
+  const mobileMQ = window.matchMedia("(max-width: 640px)");
+  const enableGraph = () => {
+    if (document.body.classList.contains("graph-ready")) return;
+    document.body.classList.add("graph-ready", "map-view");
+    fit();
+    openFromHash();
+  };
+  const disableGraph = () => {
+    if (panel.classList.contains("is-open")) closePanel();
+    document.body.classList.remove("graph-ready", "map-view");
+  };
+  const applyMode = () => { mobileMQ.matches ? disableGraph() : enableGraph(); };
+  applyMode();
+  if (mobileMQ.addEventListener) mobileMQ.addEventListener("change", applyMode);
+  else if (mobileMQ.addListener) mobileMQ.addListener(applyMode);
 })();

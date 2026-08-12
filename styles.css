@@ -183,7 +183,7 @@
   [data-theme="light"] .bg-network { opacity: 0.4; }
 
   /* dim the ambient mesh further behind the map so the main graph leads */
-  body.map-view .bg-network { opacity: 0.22; }
+  body.map-view .bg-network { opacity: 0.45; }
 
   .scanlines {
     position: fixed;
@@ -2073,47 +2073,6 @@
     .gnode-core .gnode-dot { width: 88px; height: 88px; }
     .gnode-section .gnode-dot { width: 64px; height: 64px; }
     .panel-inner { width: 100%; border-left: none; }
-  }
-
-  /* ---- Mobile: tappable node list replaces the pannable graph ---- */
-  #node-list { display: none; }
-  .nlist-item {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    width: 100%;
-    text-align: left;
-    padding: 1.05rem 1.35rem;
-    border-bottom: 1px solid var(--border);
-    background: none;
-    color: var(--text);
-    transition: background var(--t);
-  }
-  .nlist-item:active { background: var(--green-glow); }
-  .nlist-core { background: var(--green-dim); }
-  .nlist-idx {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--accent);
-    width: 1.5rem;
-    flex-shrink: 0;
-  }
-  .nlist-body { display: flex; flex-direction: column; gap: 0.15rem; flex: 1; min-width: 0; }
-  .nlist-label { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; line-height: 1.15; }
-  .nlist-leaf .nlist-label { font-weight: 500; font-size: 0.95rem; }
-  .nlist-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--text-3); }
-  .nlist-arrow { color: var(--accent); font-size: 1rem; flex-shrink: 0; }
-  .nlist-leaf .nlist-arrow { color: var(--accent-2); }
-
-  @media (max-width: 560px) {
-    body.graph-ready .graph-viewport,
-    body.graph-ready .graph-controls { display: none !important; }
-    body.graph-ready #node-list {
-      display: block;
-      flex: 1;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
