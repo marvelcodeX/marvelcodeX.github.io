@@ -1,4 +1,16 @@
+# editor / OS
 .vscode/
 .DS_Store
-.claude/
 *.bak
+
+# local tooling and design-assistant working files
+.claude/
+.impeccable/
+.taste-skill/
+.playwright/
+.playwright-cli/
+PRODUCT.md
+DESIGN.md
+
+# raw screenshot original (the site uses the compressed fim.jpg beside it)
+images/projects/FLM.png

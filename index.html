@@ -2,16 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio</title>
     <meta name="description" content="Portfolio of Niveditha Jayakumar — an engineering student building AI &amp; cybersecurity tools across cloud security, digital forensics, and local LLMs, and writing about technology and ideas." />
     <link rel="canonical" href="https://marvelcodeX.github.io/" />
+    <meta name="theme-color" content="#0F5C2B" />
+    <meta name="color-scheme" content="light dark" />
 
     <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 
     <!-- Open Graph / social share card -->
     <meta property="og:type" content="website" />
@@ -19,7 +21,7 @@
     <meta property="og:title" content="Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio" />
     <meta property="og:description" content="Engineering student building AI &amp; cybersecurity tools — cloud security, digital forensics, and local LLMs — plus essays on technology and ideas." />
     <meta property="og:url" content="https://marvelcodeX.github.io/" />
-    <meta property="og:image" content="https://marvelcodeX.github.io/og-image.png" />
+    <meta property="og:image" content="https://marvelcodeX.github.io/images/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Niveditha Jayakumar — AI & Cybersecurity portfolio" />
@@ -28,328 +30,262 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Niveditha Jayakumar — AI &amp; Cybersecurity Portfolio" />
     <meta name="twitter:description" content="Engineering student building AI &amp; cybersecurity tools — cloud security, digital forensics, and local LLMs — plus essays on technology and ideas." />
-    <meta name="twitter:image" content="https://marvelcodeX.github.io/og-image.png" />
+    <meta name="twitter:image" content="https://marvelcodeX.github.io/images/og-image.png" />
 
     <script>
       (() => {
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "light") document.documentElement.setAttribute("data-theme", "light");
+        const root = document.documentElement;
+        root.classList.add("js");
+        try {
+          const saved = localStorage.getItem("theme");
+          if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+        } catch (e) {}
       })();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&family=Covered+By+Your+Grace&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
   </head>
   <body>
-    <div id="scroll-progress" aria-hidden="true"></div>
-    <div class="cursor-spotlight" aria-hidden="true"></div>
+    <!-- Drawn icons: one 24px grid, one 1.75 stroke -->
+    <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+      <filter id="stamp" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="warp" />
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.2" result="rough" />
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="9" result="grain" />
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 7 -2.35" result="mask" />
+        <feComposite in="rough" in2="mask" operator="in" />
+      </filter>
+      <!-- riso stamps: rough-edged, grainy ink -->
+      <symbol id="f-chip" viewBox="0 0 100 100">
+              <rect x="24" y="24" width="52" height="52" rx="6" fill="currentColor" />
+              <g fill="currentColor">
+                <rect x="31" y="8" width="7" height="16" /><rect x="46.5" y="8" width="7" height="16" /><rect x="62" y="8" width="7" height="16" />
+                <rect x="31" y="76" width="7" height="16" /><rect x="46.5" y="76" width="7" height="16" /><rect x="62" y="76" width="7" height="16" />
+                <rect x="8" y="31" width="16" height="7" /><rect x="8" y="46.5" width="16" height="7" /><rect x="8" y="62" width="16" height="7" />
+                <rect x="76" y="31" width="16" height="7" /><rect x="76" y="46.5" width="16" height="7" /><rect x="76" y="62" width="16" height="7" />
+              </g>
+              <rect class="cut-s" x="35" y="35" width="30" height="30" rx="3" />
+              <rect class="cut" x="45" y="45" width="10" height="10" />
+            </symbol>
+      <symbol id="f-shield" viewBox="0 0 100 100">
+              <path d="M50 6L88 19V48C88 72 71 87 50 95C29 87 12 72 12 48V19Z" fill="currentColor" />
+              <circle class="cut" cx="50" cy="42" r="9" />
+              <path class="cut" d="M45 48L40 72H60L55 48Z" />
+            </symbol>
+      <symbol id="f-cloud" viewBox="0 0 100 100">
+              <path d="M27 78C12 78 6 67 8 58C10 49 19 44 26 46C27 32 40 23 53 26C63 28 69 35 70 43C83 42 94 51 92 63C91 72 83 78 74 78Z" fill="currentColor" />
+              <path class="cut-s thin" d="M33 62L51 53L69 63" />
+              <g class="cut"><circle cx="33" cy="62" r="6" /><circle cx="51" cy="53" r="6" /><circle cx="69" cy="63" r="6" /></g>
+            </symbol>
+      <symbol id="f-lens" viewBox="0 0 100 100">
+              <circle cx="42" cy="42" r="30" fill="none" stroke="currentColor" stroke-width="11" />
+              <path d="M65 65L90 90" stroke="currentColor" stroke-width="13" stroke-linecap="round" />
+              <path d="M27 34H56M27 45H50M27 56H42" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+            </symbol>
+      <symbol id="f-doc" viewBox="0 0 100 100">
+              <path d="M24 6H62L80 24V94H24Z" fill="currentColor" />
+              <path class="cut-s" d="M62 6V24H80" />
+              <path class="cut-s" d="M35 42H69M35 54H69M35 66H69M35 78H54" />
+            </symbol>
+      <symbol id="f-nodes" viewBox="0 0 100 100">
+              <path d="M20 28L50 46L82 32M50 46L34 78M50 46L72 76M20 28L34 78" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+              <g fill="currentColor"><circle cx="20" cy="28" r="10" /><circle cx="82" cy="32" r="9" /><circle cx="50" cy="46" r="14" /><circle cx="34" cy="78" r="10" /><circle cx="72" cy="76" r="11" /></g>
+              <circle class="cut" cx="50" cy="46" r="5" />
+            </symbol>
+      <symbol id="f-lock" viewBox="0 0 100 100">
+              <path d="M31 44V30C31 10 69 10 69 30V44" fill="none" stroke="currentColor" stroke-width="10" />
+              <rect x="18" y="42" width="64" height="50" rx="7" fill="currentColor" />
+              <circle class="cut" cx="50" cy="62" r="7" />
+              <rect class="cut" x="47" y="64" width="6" height="14" />
+            </symbol>
+      <symbol id="f-prompt" viewBox="0 0 100 100">
+              <rect x="5" y="14" width="90" height="72" rx="6" fill="currentColor" />
+              <path class="cut-s thin" d="M5 33H95" />
+              <path class="cut-s" d="M24 46L40 58L24 70M48 72H70" />
+            </symbol>
+      <symbol id="f-code" viewBox="0 0 100 100"><path d="M32 26L10 50L32 74M68 26L90 50L68 74M58 16L42 84" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" /></symbol>
+      <symbol id="f-layers" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round"><path d="M50 12L90 32L50 52L10 32Z" /><path d="M10 52L50 72L90 52" /><path d="M10 70L50 90L90 70" /></g></symbol>
+      <symbol id="f-db" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="8"><ellipse cx="50" cy="22" rx="36" ry="12" /><path d="M14 22V78C14 85 30 90 50 90C70 90 86 85 86 78V22" /><path d="M14 50C14 57 30 62 50 62C70 62 86 57 86 50" /></g></symbol>
+      <symbol id="f-branch" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><circle cx="28" cy="20" r="10" /><circle cx="28" cy="80" r="10" /><circle cx="72" cy="38" r="10" /><path d="M28 30V70M72 48C72 66 28 56 28 70" /></g></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10.5 5 8 4.5 4 4.5v13c4 0 6.5.5 8 2 1.5-1.5 4-2 8-2v-13c-4 0-6.5.5-8 2zM12 6.5v13" /></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7zM14 3v5h5M10 13h6M10 17h6" /></symbol>
+      <symbol id="i-branch" viewBox="0 0 24 24"><path d="M6 3v12M18 9a9 9 0 0 1-9 9" /><circle cx="18" cy="6" r="3" /><circle cx="6" cy="18" r="3" /></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6zM8.5 12l2.5 2.5 4.5-5" /></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5 4 4 0 0 1 17 18z" /></symbol>
+      <symbol id="i-logs" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m20 20-4.9-4.9M8 9.5h5M8 12h3" /></symbol>
+      <symbol id="i-docsearch" viewBox="0 0 24 24"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4M13 3l5 5v2M13 3v5h5" /><circle cx="16.5" cy="16.5" r="3" /><path d="m21 21-2.4-2.4" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3.5 7 8.5 6 8.5-6" /></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V6a2 2 0 0 1 2-2h9" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" /></symbol>
+      <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" /></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" /></symbol>
+      <symbol id="i-contrast" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 3.5a8.5 8.5 0 0 0 0 17z" fill="currentColor" /></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" /></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></symbol>
+      <symbol id="i-substack" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" /></symbol>
+      <symbol id="i-medium" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" /></symbol>
+    </svg>
 
-    <!-- Ambient background layers -->
-    <div class="bg-grid" aria-hidden="true"></div>
-    <div class="bg-noise" aria-hidden="true"></div>
-    <div class="bg-glow glow-1" aria-hidden="true"></div>
-    <div class="bg-glow glow-2" aria-hidden="true"></div>
-    <div class="bg-glow glow-3" aria-hidden="true"></div>
-    <canvas class="bg-network" id="net-canvas" aria-hidden="true"></canvas>
-    <div class="scanlines" aria-hidden="true"></div>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <!-- NODE-GRAPH EXPLORER (progressive enhancement; hidden without JS) -->
-    <div id="explorer" aria-label="Interactive portfolio map">
-      <div class="explorer-bar">
-        <a class="brand" href="#home">
-          <span class="brand-bracket">[</span>Niveditha Jayakumar<span class="brand-bracket">]</span>
-        </a>
-        <span class="explorer-hint" aria-hidden="true">drag to pan · scroll to zoom · click a node</span>
-        <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-          <span class="toggle-track">
-            <span class="toggle-thumb"></span>
-            <span class="toggle-icon sun">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-            </span>
-            <span class="toggle-icon moon">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-            </span>
-          </span>
-        </button>
-      </div>
-      <div class="graph-viewport" id="graph-viewport">
-        <div class="graph-world" id="graph-world">
-          <svg class="graph-edges" id="graph-edges" aria-hidden="true"></svg>
-          <!-- nodes injected by script.js -->
-        </div>
-      </div>
-      <div class="graph-controls" aria-label="Map controls">
-        <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
-        <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
-        <button type="button" data-zoom="reset" aria-label="Reset view">⟲</button>
-      </div>
-    </div>
-
-    <!-- SECTION PANEL (host for a section when its node is opened) -->
-    <div id="panel" aria-hidden="true">
-      <div class="panel-inner">
-        <div class="panel-bar">
-          <button class="panel-close" type="button">← back</button>
-        </div>
-        <div class="panel-host" id="panel-host"></div>
-      </div>
-    </div>
-
-    <!-- HEADER -->
-    <header class="site-header">
-      <div class="container nav-shell">
-        <a class="brand" href="#home">
-          <span class="brand-bracket">[</span>Niveditha Jayakumar<span class="brand-bracket">]</span>
-        </a>
-
-        <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-          <a href="#about"><span class="nav-num">01.</span>About</a>
-          <a href="#projects"><span class="nav-num">02.</span>Projects</a>
-          <a href="#skills"><span class="nav-num">03.</span>Skills</a>
-          <a href="#writing"><span class="nav-num">04.</span>Writing</a>
-          <a href="#timeline"><span class="nav-num">05.</span>Journey</a>
-          <a href="#contact"><span class="nav-num">06.</span>Contact</a>
-          <a class="nav-resume-mobile" href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-        </nav>
-
-        <div class="nav-actions">
-          <a class="resume-link" href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-          <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-            <span class="toggle-track">
-              <span class="toggle-thumb"></span>
-              <span class="toggle-icon sun">
-                <!-- Sun icon -->
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-              </span>
-              <span class="toggle-icon moon">
-                <!-- Moon icon -->
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-              </span>
-            </span>
-          </button>
-          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
+    <!-- MASTHEAD -->
+    <header class="mast">
+      <a class="brand" href="#top" aria-label="Niveditha Jayakumar, back to top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path class="bm-shield" d="M16 2.5 27 6.8V15c0 6.4-4.4 11.1-11 14-6.6-2.9-11-7.6-11-14V6.8z" /><path class="bm-chev" d="M11.2 11.6 16.4 16l-5.2 4.4" /><path class="bm-cursor" d="M18.2 21h4.4" /></svg>
+        <span>Niveditha Jayakumar</span>
+      </a>
+      <nav class="links" id="links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#writing">Writing</a>
+        <a href="#journey">Journey</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="tools">
+        <button class="tool ask-open" type="button" aria-haspopup="dialog" aria-label="Ask this page" hidden><svg class="ico" aria-hidden="true"><use href="#i-search" /></svg><span class="tool-text">Ask</span></button>
+        <button class="tool mode" type="button" aria-label="Switch between light and dark"><svg class="ico" aria-hidden="true"><use href="#i-contrast" /></svg></button>
+        <button class="tool menu" type="button" aria-expanded="false" aria-controls="links">Menu</button>
       </div>
     </header>
 
-    <main id="home">
+    <!-- ASK THIS PAGE: answers only with the page's own sentences, the way the PDF system answers from a document -->
+    <dialog class="ask" id="ask" aria-labelledby="ask-title">
+      <div class="ask-inner">
+        <div class="ask-top">
+          <h2 id="ask-title">Ask this page</h2>
+          <button class="ask-close" type="button">Close</button>
+        </div>
+        <p class="ask-lead">Type a question. It answers only with sentences from this page and tells you where each one came from.</p>
+        <form class="ask-form" id="ask-form" role="search">
+          <label class="sr-only" for="ask-input">Your question</label>
+          <input id="ask-input" name="q" type="text" autocomplete="off" placeholder="Which projects use local LLMs?" />
+          <button class="btn btn-solid" type="submit">Ask</button>
+        </form>
+        <p class="ask-try">
+          <button type="button" data-q="What is Soteria-AI?">What is Soteria-AI?</button>
+          <button type="button" data-q="Which databases does she use?">Which databases does she use?</button>
+          <button type="button" data-q="Where does she write?">Where does she write?</button>
+        </p>
+        <p class="ask-go-label" id="ask-go-label">Jump to</p>
+        <div class="ask-go" id="ask-go" role="group" aria-labelledby="ask-go-label"></div>
+        <div class="ask-out" id="ask-out" aria-live="polite"></div>
+      </div>
+    </dialog>
 
-<section class="hero section" id="hero">
-        <div class="hero-slice" aria-hidden="true"></div>
-        <div class="hero-slice-line" aria-hidden="true"></div>
-
-        <div class="container hero-outer">
-          <div class="hero-copy">
-            <p class="eyebrow reveal" id="hero-eyebrow">
-              <span class="cursor-blink">▋</span><span class="eyebrow-type"></span>
-            </p>
-
-            <h1 class="hero-heading">
-              <span class="h1-line reveal">Hi,</span>
-              <span class="h1-line h1-name reveal">I'm <em>Niveditha</em></span>
-            </h1>
-
-            <p class="hero-text reveal">
-              I love to build and write about technology,<br>stories, and ideas.
-            </p>
-
-            <div class="hero-actions reveal">
-              <a class="button button-primary" href="#projects">
-                <span>View Projects</span>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-              <a class="button button-ghost" href="#writing">Read My Writing</a>
-              <a class="button button-ghost" href="#contact">Contact</a>
-              <a class="button button-ghost" href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
-            </div>
-
-            <ul class="hero-tags reveal" aria-label="Highlights">
-              <li>Secure AI Systems</li>
-              <li>Hackathon-Built Ideas</li>
-              <li>Stories Behind Systems</li>
-            </ul>
+    <!-- PROJECT PREVIEW: a terminal that opens the project's own record next to a real screenshot -->
+    <dialog class="proj-dlg" id="proj-dlg" aria-labelledby="pd-title">
+      <div class="term">
+        <div class="term-bar">
+          <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="term-title" id="pd-path">niveditha@portfolio ~ project</span>
+          <button class="pd-close" type="button">Close</button>
+        </div>
+        <div class="term-body pd-body">
+          <p class="t-line"><span class="t-prompt">→</span><span><span class="t-cmd">cat</span> <span class="t-str" id="pd-file">project.md</span></span></p>
+          <p class="t-comment" id="pd-title">#</p>
+          <p class="t-comment" id="pd-class">#</p>
+          <div class="pd-meta">
+            <p><span class="t-flag">status</span> <span id="pd-status"></span></p>
+            <p><span class="t-flag">stack</span> <span id="pd-stack"></span></p>
+            <p><span class="t-flag">source</span> <a id="pd-src" target="_blank" rel="noreferrer"></a></p>
           </div>
+          <p class="pd-desc" id="pd-desc"></p>
+          <figure class="pd-shot">
+            <img id="pd-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="1600" height="900" decoding="async" />
+            <figcaption id="pd-cap"></figcaption>
+          </figure>
+          <div class="pd-nav">
+            <button type="button" id="pd-prev"><svg class="ico" aria-hidden="true"><use href="#i-left" /></svg>Previous project</button>
+            <button type="button" id="pd-next">Next project<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button>
+          </div>
+        </div>
+      </div>
+    </dialog>
 
-          <aside class="hero-card-wrap reveal" aria-label="Profile summary">
-            <div class="hero-card" id="parallax-card">
-              <div class="card-dots" aria-hidden="true"></div>
-              <div class="card-header">
-                <div class="card-title-row">
-                  <span class="live-dot"></span>
-                  <span class="card-label">status.active</span>
-                </div>
-              </div>
-              
-              <div class="activity-feed">
-                <a class="activity-item" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer">
-                  <span class="activity-tag tag-project">project</span>
-                  <div class="activity-body">
-                    <span class="activity-title">Soteria-AI</span>
-                    <span class="activity-sub">AI · Dependency Risk Analysis</span>
-                  </div>
-                  <span class="activity-time">ongoing ↗</span>
-                </a>
-                <a class="activity-item" href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer">
-                  <span class="activity-tag tag-project">project</span>
-                  <div class="activity-body">
-                    <span class="activity-title">Cloud Security Posture Manager</span>
-                    <span class="activity-sub">Cybersecurity · ML · React</span>
-                  </div>
-                  <span class="activity-time">ongoing ↗</span>
-                </a>
-                <a class="activity-item" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">
-                  <span class="activity-tag tag-write">writing</span>
-                  <div class="activity-body">
-                    <span class="activity-title">Essays on Substack & Medium</span>
-                    <span class="activity-sub">Cybersecurity, AI, and Emerging Technologies</span>
-                  </div>
-                  <span class="activity-time">ongoing ↗</span>
-                </a>
-                <div class="activity-item">
-                  <span class="activity-tag tag-focus">learn</span>
-                  <div class="activity-body">
-                    <span class="activity-title">Cybersecurity Roadmap</span>
-                    <span class="activity-sub">Blue Team • Cloud Security</span>
-                  </div>
-                  <span class="activity-time"></span>
-                </div>
-              </div>
+    <main id="main">
+      <div class="trace" id="trace" aria-hidden="true"><span class="trace-fill" id="trace-fill"></span></div>
+
+      <!-- HERO -->
+      <section class="field f-green hero" id="top">
+        <div class="wrap">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <svg class="stamp st-chip" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-chip" /></svg>
+              <h1>Niveditha<br />Jayakumar</h1>
+              <p class="hero-lead">I love to build and write about technology, <span class="hand">stories<svg class="scribble" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9C22 3 42 12 62 7s38-4 55 1" /></svg></span>, and ideas.</p>
+
+          <svg class="stamp st-lock" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-lock" /></svg>
             </div>
-            <span class="corner-mark cm-tl" aria-hidden="true"></span>
-            <span class="corner-mark cm-tr" aria-hidden="true"></span>
-            <span class="corner-mark cm-bl" aria-hidden="true"></span>
-            <span class="corner-mark cm-br" aria-hidden="true"></span>
-          </aside>
+
+            <div class="record" role="group" aria-label="Profile">
+              <p class="record-id"><span>Profile</span><span>marvelcodeX</span></p>
+              <dl>
+              <div class="record-row">
+                <dt>Role</dt>
+                <dd><strong>Information Science and Engineering student</strong></dd>
+              </div>
+              <div class="record-row">
+                <dt>Primary Focus</dt>
+                <dd><strong>AI &amp; Cybersecurity</strong><span>AI · Cybersecurity · Cloud Security · Developer Tools</span></dd>
+              </div>
+              <div class="record-row">
+                <dt>Built Under Pressure</dt>
+                <dd><strong>4 Hackathons</strong><span>Aventus 2.0 · Recursive · Aventus 3.0 · HackCulture</span></dd>
+              </div>
+              <div class="record-row">
+                <dt>Writing On</dt>
+                <dd><strong>Substack &amp; Medium</strong><span>Technology · Cybersecurity · Engineering</span></dd>
+              </div>
+              </dl>
+            </div>
+          </div>
+          <nav class="doors" aria-label="Where to start">
+            <a class="door door-read" href="#writing">
+              <svg class="ico door-ico" aria-hidden="true"><use href="#i-book" /></svg>
+              <span class="door-name">Read my writing</span>
+              <span class="door-sub">Substack &amp; Medium</span>
+              <svg class="ico door-go" aria-hidden="true"><use href="#i-right" /></svg>
+            </a>
+            <a class="door door-hire" href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer">
+              <svg class="ico door-ico" aria-hidden="true"><use href="#i-file" /></svg>
+              <span class="door-name">View resume</span>
+              <span class="door-sub">PDF</span>
+              <svg class="ico door-go" aria-hidden="true"><use href="#i-up-right" /></svg>
+            </a>
+            <a class="door door-build" href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer">
+              <svg class="ico door-ico" aria-hidden="true"><use href="#i-branch" /></svg>
+              <span class="door-name">Open GitHub</span>
+              <span class="door-sub">marvelcodeX</span>
+              <svg class="ico door-go" aria-hidden="true"><use href="#i-up-right" /></svg>
+            </a>
+          </nav>
         </div>
       </section>
 
-<section class="section" id="about">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 01</span> About</p>
-            <h2>A little bit about who I am</h2>
-          </div>
-
-          <div class="about-layout">
-            <!-- Terminal window -->
-            <div class="about-terminal reveal">
-              <div class="terminal-bar">
-                <span class="terminal-dot td-red"></span>
-                <span class="terminal-dot td-yellow"></span>
-                <span class="terminal-dot td-green"></span>
-                <span class="terminal-title">niveditha@portfolio ~ zsh</span>
-                <span class="terminal-hint">interactive</span>
-              </div>
-              <div class="terminal-body">
-                <div class="terminal-line">
-                  <span class="t-prompt">→</span>
-                  <span><span class="t-cmd">cat</span> <span class="t-flag">--verbose</span> <span class="t-str">about.md</span></span>
-                </div>
-              
-                <span class="t-blank"></span>
-              
-                <div class="terminal-line">
-                  <span class="t-comment"># Niveditha Jayakumar</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-comment"># Information Science and Engineering student</span>
-                </div>
-              
-                <span class="t-blank"></span>
-              
-                <div class="terminal-line">
-                  <span class="t-output">I'm an engineering student passionate about building</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">intelligent systems that solve real-world problems.</span>
-                </div>
-              
-                <span class="t-blank"></span>
-              
-                <div class="terminal-line">
-                  <span class="t-output">My interests lie at the intersection of AI,</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">cybersecurity, and software engineering, where I</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">build tools that make complex systems more secure,</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">understandable, and practical to use.</span>
-                </div>
-              
-                <span class="t-blank"></span>
-              
-                <div class="terminal-line">
-                  <span class="t-output">Outside of technology, I write because stories help</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">me make sense of ideas, people, and the future I</span>
-                </div>
-                <div class="terminal-line">
-                  <span class="t-output">hope to contribute to.</span>
-                </div>
-              
-                <span class="t-blank"></span>
-              
-                <div id="terminal-output" class="terminal-output"></div>
-              
-                <div class="terminal-input-line">
-                  <span class="t-prompt">→</span>
-                  <input
-                    type="text"
-                    id="terminal-input"
-                    class="terminal-input"
-                    placeholder="type 'help'"
-                    autocomplete="off"
-                    spellcheck="false"
-                    aria-label="Terminal command input"
-                  />
-                </div>
-              </div>
+      <!-- ABOUT -->
+      <section class="field f-cream about" id="about" data-name="About">
+        <div class="wrap about-grid">
+          <h2>A little bit about who I am</h2>
+          <div class="term" id="term">
+            <div class="term-bar">
+              <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="term-title">niveditha@portfolio ~ zsh</span>
             </div>
-
-            <!-- Right: stat cards -->
-            <div class="about-stats">
-              <div class="about-stat-card reveal">
-                <div class="stat-icon">
-                  <!-- Brain / AI icon -->
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-                </div>
-                <div class="stat-body">
-                  <div class="stat-label">Primary Focus</div>
-                  <div class="stat-value">AI & Cybersecurity</div>
-                  <div class="stat-sub">AI · Cybersecurity · Cloud Security · Developer Tools</div>
-                </div>
-              </div>
-              <div class="about-stat-card reveal">
-                <div class="stat-icon">
-                  <!-- Zap / hackathon icon -->
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                </div>
-                <div class="stat-body">
-                  <div class="stat-label">Built Under Pressure</div>
-                  <div class="stat-value">4 Hackathons</div>
-                  <div class="stat-sub">Aventus 2.0 · Recursive · Aventus 3.0 · HackCulture</div>
-                </div>
-              </div>
-              <div class="about-stat-card reveal">
-                <div class="stat-icon">
-                  <!-- Pen / writing icon -->
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-                </div>
-                <div class="stat-body">
-                  <div class="stat-label">Writing On</div>
-                  <div class="stat-value">Substack & Medium</div>
-                  <div class="stat-sub">Technology · Cybersecurity · Engineering</div>
-                </div>
-              </div>
-              <div class="about-prose reveal">
+            <div class="term-body">
+              <p class="t-line"><span class="t-prompt">→</span><span><span class="t-cmd">cat</span> <span class="t-flag">--verbose</span> <span class="t-str">about.md</span></span></p>
+              <p class="t-comment"># Niveditha Jayakumar</p>
+              <p class="t-comment"># Information Science and Engineering student</p>
+              <div class="t-out about-body">
+                <p class="statement">I'm an engineering student passionate about building intelligent systems that solve real-world problems.</p>
+                <p>My interests lie at the intersection of AI, cybersecurity, and software engineering, where I build tools that make complex systems more secure, understandable, and practical to use.</p>
+                <p>Outside of technology, I write because stories help me make sense of ideas, people, and the future I hope to contribute to.</p>
                 <p>Recently, I've been exploring cloud security, digital forensics, local LLMs, and AI-assisted developer tools while continuously expanding my knowledge of secure software design and modern backend development.</p>
               </div>
             </div>
@@ -357,339 +293,241 @@
         </div>
       </section>
 
-<section class="section" id="projects">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 02</span> Projects</p>
-            <h2>Work that reflects what I care about.</h2>
+      <!-- PROJECTS: a shelf that scrolls sideways -->
+      <section class="field f-green projects" id="projects" data-name="Projects">
+        <div class="wrap shelf-head">
+          <h2>Work that reflects what I care about.</h2>
+          <div class="shelf-ctl">
+            <p class="shelf-count" aria-hidden="true"><span id="shelf-n">1</span> of 5</p>
+            <button class="round" type="button" data-shelf="-1" aria-label="Previous project"><svg class="ico" aria-hidden="true"><use href="#i-left" /></svg></button>
+            <button class="round" type="button" data-shelf="1" aria-label="Next project"><svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button>
           </div>
+        </div>
 
-          <ol class="projects-log">
-            <li class="log-entry reveal">
-              <div class="log-rail">
-                <span class="log-num">01</span>
-                <span class="log-status status-active">ongoing</span>
-              </div>
-              <div class="log-body">
-                <p class="log-class">AI + Software Security</p>
-                <h3>Soteria-AI</h3>
-                <p class="log-desc">An AI-powered dependency security platform that scans project libraries for known vulnerabilities and explains security risks in plain English.</p>
-                <ul class="log-stack"><li>Python</li><li>FastAPI</li><li>React</li><li>Ollama</li><li>PostgreSQL</li><li>AST</li></ul>
-                <details class="log-more">
-                  <summary>read more</summary>
-                  <p>It combines vulnerability intelligence, reachability analysis, and local LLMs to help developers understand what actually matters and prioritize fixes with confidence. Interactive dashboards, dependency visualizations, and detailed reports make security findings easier to explore and act upon.</p>
-                </details>
-              </div>
-              <div class="log-actions">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
-              </div>
-            </li>
-            <li class="log-entry reveal">
-              <div class="log-rail">
-                <span class="log-num">02</span>
-                <span class="log-status status-active">ongoing</span>
-              </div>
-              <div class="log-body">
-                <p class="log-class">Cloud + Cybersecurity</p>
-                <h3>Cloud Security Posture Manager</h3>
-                <p class="log-desc">A full-stack cloud security platform that analyzes uploaded cloud configurations and emulated AWS environments for security misconfigurations.</p>
-                <ul class="log-stack"><li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>NetworkX</li></ul>
-                <details class="log-more">
-                  <summary>read more</summary>
-                  <p>Built around benchmark-driven rule engines, compliance mapping, and machine learning to identify risks, prioritize findings, and visualize potential attack paths — helping teams understand cloud risks before they become incidents.</p>
-                </details>
-              </div>
-              <div class="log-actions">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
-              </div>
-            </li>
-            <li class="log-entry reveal">
-              <div class="log-rail">
-                <span class="log-num">03</span>
-                <span class="log-status status-done">shipped</span>
-              </div>
-              <div class="log-body">
-                <p class="log-class">Digital Forensics + SOC</p>
-                <h3>Log Forensics Tool</h3>
-                <p class="log-desc">A desktop security analysis tool that detects suspicious activity across system, authentication, and web server logs through automated threat detection.</p>
-                <ul class="log-stack"><li>Python</li><li>CustomTkinter</li><li>SQLite</li><li>Syslog</li><li>Regex</li><li>Security</li></ul>
-                <details class="log-more">
-                  <summary>read more</summary>
-                  <p>It combines multiple detection engines, risk scoring, IP geolocation, and an interactive incident timeline to simplify forensic investigations — built as a practical tool for security analysts to investigate faster and with greater context.</p>
-                </details>
-              </div>
-              <div class="log-actions">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/log-forensics-tool" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
-              </div>
-            </li>
-            <li class="log-entry reveal">
-              <div class="log-rail">
-                <span class="log-num">04</span>
-                <span class="log-status status-done">shipped</span>
-              </div>
-              <div class="log-body">
-                <p class="log-class">RAG + Local LLM</p>
-                <h3>PDF Intelligence System</h3>
-                <p class="log-desc">A lightweight Retrieval-Augmented Generation (RAG) system that lets users query PDF documents using fully local language models.</p>
-                <ul class="log-stack"><li>Python</li><li>Streamlit</li><li>FAISS</li><li>Ollama</li><li>Sentence Transformers</li><li>PyMuPDF</li><li>Gradio</li></ul>
-                <details class="log-more">
-                  <summary>read more</summary>
-                  <p>It combines semantic search with vector embeddings and Ollama-powered inference to deliver grounded answers without cloud APIs. 100% local and private — designed to run on lightweight models under 2GB like Phi-3, qwen2:1.5b, and tinyllama.</p>
-                </details>
-              </div>
-              <div class="log-actions">
-                <a class="button button-sm" href="https://github.com/marvelcodeX/PDF-Intelligence-System-Using-RAG" target="_blank" rel="noreferrer"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
-              </div>
-            </li>
-            
-          </ol>
+        <div class="shelf" id="shelf" tabindex="0" role="region" aria-label="Projects, scroll sideways">
+          <article class="sheet">
+            <header class="sheet-plate">
+              <svg class="ico sheet-ico" aria-hidden="true"><use href="#i-shield" /></svg>
+              <p class="sheet-class">AI + Software Security</p>
+              <span class="chip chip-live">ongoing</span>
+            </header>
+            <svg class="stamp sheet-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-shield" /></svg>
+            <h3>Soteria-AI</h3>
+            <p class="sheet-desc">An AI-powered dependency security platform that scans project libraries for known vulnerabilities and explains security risks in plain English.</p>
+            <p class="sheet-more">It combines vulnerability intelligence, reachability analysis, and local LLMs to help developers understand what actually matters and prioritize fixes with confidence. Interactive dashboards, dependency visualizations, and detailed reports make security findings easier to explore and act upon.</p>
+            <dl class="kv">
+              <div><dt>Stack</dt><dd><ul class="stack"><li>Python</li><li>FastAPI</li><li>React</li><li>Ollama</li><li>PostgreSQL</li><li>AST</li></ul></dd></div>
+              <div class="kv-links"><dt>Open</dt><dd><a href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg>GitHub<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a><button class="open-proj" type="button" data-shot="images/projects/soteria-ai.jpg" data-alt="Soteria-AI dashboard showing a dependency scan with a project risk score of 54, rated high, and counts of critical, high, medium and low findings" data-note="Screenshot of the current build.">Open preview<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button></dd></div>
+            </dl>
+          </article>
+
+          <article class="sheet">
+            <header class="sheet-plate">
+              <svg class="ico sheet-ico" aria-hidden="true"><use href="#i-cloud" /></svg>
+              <p class="sheet-class">Cloud + Cybersecurity</p>
+              <span class="chip chip-live">ongoing</span>
+            </header>
+            <svg class="stamp sheet-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-cloud" /></svg>
+            <h3>Cloud Security Posture Manager</h3>
+            <p class="sheet-desc">A full-stack cloud security platform that analyzes uploaded cloud configurations and emulated AWS environments for security misconfigurations.</p>
+            <p class="sheet-more">Built around benchmark-driven rule engines, compliance mapping, and machine learning to identify risks, prioritize findings, and visualize potential attack paths — helping teams understand cloud risks before they become incidents.</p>
+            <dl class="kv">
+              <div><dt>Stack</dt><dd><ul class="stack"><li>Python</li><li>FastAPI</li><li>React</li><li>PostgreSQL</li><li>Docker</li><li>AWS</li><li>NetworkX</li></ul></dd></div>
+              <div class="kv-links"><dt>Open</dt><dd><a href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg>GitHub<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a><button class="open-proj" type="button" data-shot="images/projects/cspm.png" data-alt="Cloud Security Posture Manager dashboard listing top risks across scans with severity badges and a findings-by-severity chart" data-note="Screenshot of the current build.">Open preview<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button></dd></div>
+            </dl>
+          </article>
+
+          <article class="sheet">
+            <header class="sheet-plate">
+              <svg class="ico sheet-ico" aria-hidden="true"><use href="#i-logs" /></svg>
+              <p class="sheet-class">Digital Forensics + SOC</p>
+              <span class="chip chip-done">shipped</span>
+            </header>
+            <svg class="stamp sheet-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-lens" /></svg>
+            <h3>Log Forensics Tool</h3>
+            <p class="sheet-desc">A desktop security analysis tool that detects suspicious activity across system, authentication, and web server logs through automated threat detection.</p>
+            <p class="sheet-more">It combines multiple detection engines, risk scoring, IP geolocation, and an interactive incident timeline to simplify forensic investigations — built as a practical tool for security analysts to investigate faster and with greater context.</p>
+            <dl class="kv">
+              <div><dt>Stack</dt><dd><ul class="stack"><li>Python</li><li>CustomTkinter</li><li>SQLite</li><li>Syslog</li><li>Regex</li><li>Security</li></ul></dd></div>
+              <div class="kv-links"><dt>Open</dt><dd><a href="https://github.com/marvelcodeX/log-forensics-tool" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg>GitHub<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a><button class="open-proj" type="button" data-shot="images/projects/log-forensics.jpg" data-alt="Log Forensics Tool showing six findings from an authentication log, with severity, type, source, user and time columns" data-note="Screenshot of the shipped tool.">Open preview<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button></dd></div>
+            </dl>
+          </article>
+
+          <article class="sheet">
+            <header class="sheet-plate">
+              <svg class="ico sheet-ico" aria-hidden="true"><use href="#i-docsearch" /></svg>
+              <p class="sheet-class">RAG + Local LLM</p>
+              <span class="chip chip-done">shipped</span>
+            </header>
+            <svg class="stamp sheet-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-doc" /></svg>
+            <h3>PDF Intelligence System</h3>
+            <p class="sheet-desc">A lightweight Retrieval-Augmented Generation (RAG) system that lets users query PDF documents using fully local language models.</p>
+            <p class="sheet-more">It combines semantic search with vector embeddings and Ollama-powered inference to deliver grounded answers without cloud APIs. 100% local and private — designed to run on lightweight models under 2GB like Phi-3, qwen2:1.5b, and tinyllama.</p>
+            <dl class="kv">
+              <div><dt>Stack</dt><dd><ul class="stack"><li>Python</li><li>Streamlit</li><li>FAISS</li><li>Ollama</li><li>Sentence Transformers</li><li>PyMuPDF</li><li>Gradio</li></ul></dd></div>
+              <div class="kv-links"><dt>Open</dt><dd><a href="https://github.com/marvelcodeX/PDF-Intelligence-System-Using-RAG" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg>GitHub<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a><button class="open-proj" type="button" data-shot="images/projects/pdf-intelligence.jpg" data-alt="PDF Intelligence System chat answering a question about residual networks, with the source page cited" data-note="Screenshot of the shipped tool.">Open preview<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button></dd></div>
+            </dl>
+          </article>
+
+          <article class="sheet">
+            <header class="sheet-plate">
+              <svg class="ico sheet-ico" aria-hidden="true"><use href="#i-file" /></svg>
+              <p class="sheet-class">Integrity + Intrusion Detection</p>
+              <span class="chip chip-done">shipped</span>
+            </header>
+            <svg class="stamp sheet-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-lock" /></svg>
+            <h3>File Integrity Monitor</h3>
+            <p class="sheet-desc">A desktop cybersecurity tool that watches files for unauthorized changes using SHA-256 hashing and real-time filesystem monitoring.</p>
+            <p class="sheet-more">It stores SHA-256 baseline snapshots in SQLite and uses watchdog to detect create, modify, delete and move events instantly. Every log line is HMAC-signed, so tampering with the logs can be detected, and a dark-themed dashboard shows a colour-coded alert feed while monitoring runs in background threads.</p>
+            <dl class="kv">
+              <div><dt>Stack</dt><dd><ul class="stack"><li>Python</li><li>Watchdog</li><li>SQLite</li><li>CustomTkinter</li><li>SHA-256</li><li>HMAC</li></ul></dd></div>
+              <div class="kv-links"><dt>Open</dt><dd><a href="https://github.com/marvelcodeX/file-integrity-monitor" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg>GitHub<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a><button class="open-proj" type="button" data-shot="images/projects/fim.jpg" data-alt="File Integrity Monitor live alert feed showing a baseline created, monitoring started, and a modified file flagged with a hash mismatch" data-note="Screenshot of the tool.">Open preview<svg class="ico" aria-hidden="true"><use href="#i-right" /></svg></button></dd></div>
+            </dl>
+          </article>
+        </div>
+
+        <div class="wrap">
+          <div class="shelf-track" aria-hidden="true"><span id="shelf-thumb"></span></div>
         </div>
       </section>
 
-<section class="section" id="skills">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 03</span> Skills</p>
-            <h2>The tools I come back to most often.</h2>
-          </div>
-          <div class="cap-matrix reveal">
-            <div class="cap-row">
-              <div class="cap-key"><span class="cap-cat">Languages</span><span class="cap-count">06</span></div>
-              <div class="cap-vals"><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>C</span><span>SQL</span></div>
-            </div>
-            <div class="cap-row">
-              <div class="cap-key"><span class="cap-cat">Frameworks &amp; Libraries</span><span class="cap-count">07</span></div>
-              <div class="cap-vals"><span>Flask</span><span>Gradio</span><span>Streamlit</span><span>Hugging Face Transformers</span><span>spaCy</span><span>Pandas</span><span>NumPy</span></div>
-            </div>
-            <div class="cap-row">
-              <div class="cap-key"><span class="cap-cat">Databases</span><span class="cap-count">03</span></div>
-              <div class="cap-vals"><span>MySQL</span><span>SQLite</span><span>MongoDB</span></div>
-            </div>
-            <div class="cap-row">
-              <div class="cap-key"><span class="cap-cat">Tools &amp; Technologies</span><span class="cap-count">04</span></div>
-              <div class="cap-vals"><span>Git &amp; GitHub</span><span>VS Code</span><span>MetaMask</span><span>Web3</span></div>
-            </div>
-          </div>
+      <!-- SKILLS -->
+      <section class="field f-cream skills" id="skills" data-name="Skills">
+        <div class="wrap">
+          <h2>The tools I come back to most often.</h2>
+          <div class="tool-filter" id="tool-filter" role="group" aria-label="Show where each tool is used"></div>
+          <p class="tool-note" id="tool-note" aria-live="polite">Pick a project to see its tools.</p>
+          <dl class="specs stackboard" id="stackboard">
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-code" /></svg><span>Languages</span></dt><dd><ul><li>Python</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>C</li><li>SQL</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-layers" /></svg><span>Frameworks &amp; Libraries</span></dt><dd><ul><li>Flask</li><li>Gradio</li><li>Streamlit</li><li>Hugging Face Transformers</li><li>spaCy</li><li>Pandas</li><li>NumPy</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-db" /></svg><span>Databases</span></dt><dd><ul><li>MySQL</li><li>SQLite</li><li>MongoDB</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-branch" /></svg><span>Tools &amp; Technologies</span></dt><dd><ul><li>Git &amp; GitHub</li><li>VS Code</li><li>MetaMask</li><li>Web3</li></ul></dd></div>
+          </dl>
+
+          <h3 class="sub">Also in the toolbox</h3>
+          <dl class="specs">
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-nodes" /></svg><span>Backend</span></dt><dd><ul><li>FastAPI</li><li>PostgreSQL</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-chip" /></svg><span>AI / ML</span></dt><dd><ul><li>Ollama</li><li>FAISS</li><li>scikit-learn</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-cloud" /></svg><span>Cloud / Security</span></dt><dd><ul><li>AWS</li><li>Docker</li><li>AST Analysis</li><li>JWT</li></ul></dd></div>
+            <div class="spec"><dt><svg class="stamp spec-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-prompt" /></svg><span>Systems</span></dt><dd><ul><li>Linux</li></ul></dd></div>
+          </dl>
         </div>
       </section>
 
-<section class="section" id="care">
-        <div class="container">
-          <div class="care-band reveal">
-            <div class="care-number">
-              <!-- Heart icon -->
-              <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-            </div>
-            <div class="care-content">
-              <div class="care-label">Currently Exploring</div>
-              <p>Lately I've been spending most of my time learning about AI-assisted security, cloud infrastructure, digital forensics, Retrieval-Augmented Generation, and backend systems. I'm particularly interested in building software that combines intelligent automation with practical engineering.</p>
-              <div class="care-tags">
-                <span class="care-tag">AI Security</span>
-                <span class="care-tag">Cloud</span>
-                <span class="care-tag">LLMs</span>
-              </div>
-            </div>
+      <!-- CURRENTLY EXPLORING + NOW -->
+      <section class="field f-rasp now" id="care" data-name="Currently Exploring">
+        <svg class="stamp now-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-nodes" /></svg>
+        <div class="wrap now-grid">
+          <div class="now-text">
+            <h2>Currently Exploring</h2>
+            <p class="lead">Lately I've been spending most of my time learning about AI-assisted security, cloud infrastructure, digital forensics, Retrieval-Augmented Generation, and backend systems.</p>
+            <p>I'm particularly interested in building software that combines intelligent automation with practical engineering.</p>
+            <ul class="pills"><li>AI Security</li><li>Cloud</li><li>LLMs</li></ul>
           </div>
+          <ul class="live">
+            <li><a class="live-row" href="https://github.com/marvelcodeX/project-dependency-risk-analyzer" target="_blank" rel="noreferrer"><div><p class="live-name">Soteria-AI</p><p class="live-sub">AI · Dependency Risk Analysis</p></div><p class="live-state">Project, ongoing</p><svg class="ico live-arrow" aria-hidden="true"><use href="#i-up-right" /></svg></a></li>
+            <li><a class="live-row" href="https://github.com/marvelcodeX/cloud-security-posture-management" target="_blank" rel="noreferrer"><div><p class="live-name">Cloud Security Posture Manager</p><p class="live-sub">Cybersecurity · ML · React</p></div><p class="live-state">Project, ongoing</p><svg class="ico live-arrow" aria-hidden="true"><use href="#i-up-right" /></svg></a></li>
+            <li><a class="live-row" href="#writing"><div><p class="live-name">Essays on Substack &amp; Medium</p><p class="live-sub">Cybersecurity, AI, and Emerging Technologies</p></div><p class="live-state">Writing, ongoing</p><svg class="ico live-arrow" aria-hidden="true"><use href="#i-down" /></svg></a></li>
+            <li><div class="live-row"><div><p class="live-name">Cybersecurity Roadmap</p><p class="live-sub">Blue Team • Cloud Security</p></div><p class="live-state">Learning</p></div></li>
+            </ul>
         </div>
       </section>
 
-<section class="section" id="writing">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 04</span> Writing</p>
-            <h2>I write about the questions technology leaves behind.</h2>
-          </div>
+      <!-- WRITING -->
+      <section class="field f-cream writing" id="writing" data-name="Writing">
+        <div class="wrap">
+          <h2>I write about the questions technology leaves behind.</h2>
+          <ul class="topics" aria-label="Topics I write about">
+            <li>Emerging Technologies</li><li>Cybersecurity</li><li>Storytelling</li><li>AI &amp; Ethics</li><li>Human Systems</li><li>Ideas Worth Building</li><li>The Future</li><li>Curiosity</li>
+          </ul>
 
-          <!-- Topic marquee -->
-          <div class="writing-marquee-wrap reveal">
-            <div class="writing-marquee" aria-hidden="true">
-              <div class="writing-marquee-track">
-                <span class="marquee-item">Emerging Technologies</span>
-                <span class="marquee-item">Cybersecurity</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-item">AI & Ethics</span>
-                <span class="marquee-item">Human Systems</span>
-                <span class="marquee-item">Ideas Worth Building</span>
-                <span class="marquee-item">The Future</span>
-                <span class="marquee-item">Curiosity</span>
-                <span class="marquee-item">Emerging Technologies</span>
-                <span class="marquee-item">Cybersecurity</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-item">AI & Ethics</span>
-                <span class="marquee-item">Human Systems</span>
-                <span class="marquee-item">Ideas Worth Building</span>
-                <span class="marquee-item">The Future</span>
-                <span class="marquee-item">Curiosity</span>
-              </div>
-              <div class="writing-marquee-track" aria-hidden="true">
-                <span class="marquee-item">Emerging Technologies</span>
-                <span class="marquee-item">Cybersecurity</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-item">AI & Ethics</span>
-                <span class="marquee-item">Human Systems</span>
-                <span class="marquee-item">Ideas Worth Building</span>
-                <span class="marquee-item">The Future</span>
-                <span class="marquee-item">Curiosity</span>
-                <span class="marquee-item">Emerging Technologies</span>
-                <span class="marquee-item">Cybersecurity</span>
-                <span class="marquee-item">Storytelling</span>
-                <span class="marquee-item">AI & Ethics</span>
-                <span class="marquee-item">Human Systems</span>
-                <span class="marquee-item">Ideas Worth Building</span>
-                <span class="marquee-item">The Future</span>
-                <span class="marquee-item">Curiosity</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="writing-grid">
-            <article class="writing-card reveal">
-              <div class="writing-banner">
-                <!-- Substack logo SVG -->
-                <svg class="writing-banner-icon platform-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Substack">
-                  <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
-                </svg>
-              </div>
-              <div class="writing-body">
-                <div class="writing-platform">Substack</div>
-                <h3>Essays & Deep Dives</h3>
-                <p>I write about cybersecurity and ideas that make us think.</p>
-                <a class="text-link" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">
-                  Read on Substack
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
-            </article>
-            <article class="writing-card reveal">
-              <div class="writing-banner">
-                <!-- Medium logo SVG -->
-                <svg class="writing-banner-icon platform-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Medium">
-                  <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                </svg>
-              </div>
-              <div class="writing-body">
-                <div class="writing-platform">Medium</div>
-                <h3>Reflections & Stories</h3>
-                <p>Essays and reflections where technology meets storytelling, curiosity, and the quieter questions we usually rush past.</p>
-                <a class="text-link" href="https://medium.com/@nivedithaja" target="_blank" rel="noreferrer">
-                  Read on Medium
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-              </div>
-            </article>
+          <div class="outlets">
+            <a class="outlet outlet-sub" href="https://substack.com/@nivedithajayakumar" target="_blank" rel="noreferrer">
+              <svg class="logo" role="img" aria-label="Substack"><use href="#i-substack" /></svg>
+              <h3>Essays &amp; Deep Dives</h3>
+              <p>I write about cybersecurity and ideas that make us think.</p>
+              <span class="outlet-go">Read on Substack<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></span>
+            </a>
+            <a class="outlet outlet-med" href="https://medium.com/@nivedithaja" target="_blank" rel="noreferrer">
+              <svg class="logo" role="img" aria-label="Medium"><use href="#i-medium" /></svg>
+              <h3>Reflections &amp; Stories</h3>
+              <p>Essays and reflections where technology meets storytelling, curiosity, and the quieter questions we usually rush past.</p>
+              <span class="outlet-go">Read on Medium<svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></span>
+            </a>
           </div>
         </div>
       </section>
 
-<section class="section" id="timeline">
-        <div class="container">
-          <div class="section-heading reveal">
-            <p class="eyebrow"><span class="eyebrow-num">// 05</span> Journey</p>
-            <h2>The path so far.</h2>
-          </div>
-          <ol class="trace">
-            <li class="trace-hop reveal">
-              <div class="trace-spine"><span class="trace-node"></span></div>
-              <div class="trace-card">
-                <div class="trace-head">
-                  <span class="trace-tag">LEARN</span>
+      <!-- JOURNEY -->
+      <section class="field f-green journey" id="journey" data-name="Journey">
+        <div class="wrap">
+          <h2>The path so far.</h2>
+          <div class="path" id="path">
+            <svg class="path-svg" id="path-svg" aria-hidden="true"><path class="path-track" id="path-track" /><path class="path-fill" id="path-fill" pathLength="1" /></svg>
+            <ol class="stops">
+              <li class="stop">
+                <span class="stop-node" aria-hidden="true"></span>
+                <div class="stop-card">
+                  <p class="where">Cisco Networking Academy</p>
+                  <div class="entry"><h3>Networking and Cybersecurity Learner</h3><p><b>Learn.</b> Currently learning networking and cybersecurity fundamentals, with a focus on how secure systems are designed, connected, and defended.</p></div>
                 </div>
-                <h3>Networking and Cybersecurity Learner</h3>
-                <div class="trace-meta"><span class="trace-meta-item">Cisco Networking Academy</span></div>
-                <p>Currently learning networking and cybersecurity fundamentals, with a focus on how secure systems are designed, connected, and defended.</p>
-              </div>
-            </li>
-            <li class="trace-hop reveal">
-              <div class="trace-spine"><span class="trace-node"></span></div>
-              <div class="trace-card">
-                <div class="trace-head">
-                  <span class="trace-tag">FOUNDATION</span>
+              </li>
+              <li class="stop">
+                <span class="stop-node" aria-hidden="true"></span>
+                <div class="stop-card">
+                  <p class="where">Dayananda Sagar College of Engineering</p>
+                  <div class="entry"><h3>Information Science and Engineering Student</h3><p><b>Foundation.</b> Building a strong base in computing, problem-solving, and systems thinking through coursework and hands-on exploration.</p></div>
                 </div>
-                <h3>Information Science and Engineering Student</h3>
-                <div class="trace-meta"><span class="trace-meta-item">Dayananda Sagar College of Engineering</span></div>
-                <p>Building a strong base in computing, problem-solving, and systems thinking through coursework and hands-on exploration.</p>
-              </div>
-            </li>
-            <li class="trace-hop reveal">
-              <div class="trace-spine"><span class="trace-node"></span></div>
-              <div class="trace-card">
-                <div class="trace-head">
-                  <span class="trace-tag">CONTRIBUTE</span>
+              </li>
+              <li class="stop">
+                <span class="stop-node" aria-hidden="true"></span>
+                <div class="stop-card">
+                  <p class="where">FiniteLoop</p>
+                  <div class="entry"><h3>Creative Intern</h3><p><b>Contribute.</b> Working in a space where ideas, communication, design thinking, and execution overlap in interesting ways.</p></div>
                 </div>
-                <h3>Creative Intern</h3>
-                <div class="trace-meta"><span class="trace-meta-item">FiniteLoop</span></div>
-                <p>Working in a space where ideas, communication, design thinking, and execution overlap in interesting ways.</p>
-              </div>
-            </li>
-            <li class="trace-hop reveal">
-              <div class="trace-spine"><span class="trace-node"></span></div>
-              <div class="trace-card">
-                <div class="trace-head">
-                  <span class="trace-tag">CREATE</span>
+              </li>
+              <li class="stop">
+                <span class="stop-node" aria-hidden="true"></span>
+                <div class="stop-card">
+                  <ul class="where branches"><li>Aventus 2.0</li><li>Recursive</li><li>Aventus 3.0</li><li>HackCulture – WitchHunt</li></ul>
+                  <div class="entry"><h3>Hackathon Builder</h3><p><b>Create.</b> Hackathons pushed me to think quickly, collaborate honestly, and shape half-formed ideas into something real under pressure.</p></div>
                 </div>
-                <h3>Hackathon Builder</h3>
-                <div class="trace-meta"><span class="trace-meta-item">Aventus 2.0</span><span class="trace-meta-item">Recursive</span><span class="trace-meta-item">Aventus 3.0</span><span class="trace-meta-item">HackCulture – WitchHunt</span></div>
-                <p>Hackathons pushed me to think quickly, collaborate honestly, and shape half-formed ideas into something real under pressure.</p>
-              </div>
-            </li>
-          </ol>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 
-<section class="section" id="contact">
-        <div class="container">
-          <div class="contact-wrap reveal">
-            <div class="contact-copy">
-              <p class="eyebrow"><span class="eyebrow-num">// 06</span> Contact</p>
-              <h2>Let's talk about ideas worth building.</h2>
-              <p>If you want to talk about technology, writing, AI, or meaningful product work, I'd love to hear from you.</p>
-            </div>
-            <div class="contact-links">
-              <div class="contact-link-row">
-                <a href="mailto:nivedithaja@gmail.com" class="contact-link">
-                  <span class="contact-link-label">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    Email
-                  </span>
-                  <span class="contact-link-val">nivedithaja@gmail.com</span>
-                  <span class="contact-link-arrow">↗</span>
-                </a>
-                <button class="copy-btn" data-copy="nivedithaja@gmail.com" aria-label="Copy email address" title="Copy email">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-                </button>
-              </div>
-              <a href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer" class="contact-link">
-                <span class="contact-link-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:inline;vertical-align:middle;margin-right:5px"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                  GitHub
-                </span>
-                <span class="contact-link-val">marvelcodeX</span>
-                <span class="contact-link-arrow">↗</span>
-              </a>
-              <a href="https://www.linkedin.com/in/niveditha-jayakumar/" target="_blank" rel="noreferrer" class="contact-link">
-                <span class="contact-link-label">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:inline;vertical-align:middle;margin-right:5px"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                  LinkedIn
-                </span>
-                <span class="contact-link-val">niveditha-jayakumar</span>
-                <span class="contact-link-arrow">↗</span>
-              </a>
-            </div>
+      <!-- CONTACT -->
+      <section class="field f-cream contact" id="contact" data-name="Contact">
+        <div class="wrap contact-grid">
+          <div class="contact-text">
+            <svg class="stamp contact-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#f-prompt" /></svg>
+            <h2>Let's talk about <span class="hand">ideas<svg class="scribble" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C22 3 44 11 64 7s36-3 53 0" /></svg></span> worth building.</h2>
+            <p class="lead">If you want to talk about technology, writing, AI, or meaningful product work, I'd love to hear from you.</p>
+            <p><a class="btn btn-solid" href="mailto:nivedithajay.writes@gmail.com"><svg class="ico" aria-hidden="true"><use href="#i-mail" /></svg>Email me</a></p>
           </div>
+          <ul class="rows">
+            <li class="row">
+              <a href="mailto:nivedithajay.writes@gmail.com"><svg class="ico" aria-hidden="true"><use href="#i-mail" /></svg><span class="row-k">Email</span><span class="row-v">nivedithajay.writes@gmail.com</span></a>
+              <button class="copy" type="button" data-copy="nivedithajay.writes@gmail.com" aria-label="Copy email address"><svg class="ico i-copy" aria-hidden="true"><use href="#i-copy" /></svg><svg class="ico i-done" aria-hidden="true"><use href="#i-check" /></svg></button>
+            </li>
+            <li class="row"><a href="https://github.com/marvelcodeX" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-github" /></svg><span class="row-k">GitHub</span><span class="row-v">marvelcodeX</span></a></li>
+            <li class="row"><a href="https://www.linkedin.com/in/niveditha-jayakumar/" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-linkedin" /></svg><span class="row-k">LinkedIn</span><span class="row-v">niveditha-jayakumar</span></a></li>
+            <li class="row"><a href="Niveditha_Resume.pdf" target="_blank" rel="noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-file" /></svg><span class="row-k">Resume</span><span class="row-v">Niveditha_Resume.pdf</span></a></li>
+          </ul>
         </div>
       </section>
 
     </main>
 
-    <button class="back-top-float" id="back-top-float" aria-label="Back to top">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 8L8 4L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-
-    <footer class="site-footer">
-      <div class="container footer-shell">
-        <p><span class="mono">©2026</span> Niveditha. Built with HTML, CSS & JS.</p>
-        <a href="#home" class="back-top">↑ Back to top</a>
+    <footer class="foot">
+      <div class="wrap foot-row">
+        <p>©2026 Niveditha. Built with HTML, CSS &amp; JS.</p>
+        <a href="#top">Back to top <svg class="ico" aria-hidden="true"><use href="#i-up-right" /></svg></a>
       </div>
     </footer>
+
+    <p class="sr-only" id="live" role="status" aria-live="polite"></p>
   </body>
 </html>

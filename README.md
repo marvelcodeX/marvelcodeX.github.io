@@ -1,64 +1,38 @@
-# 🌐 Niveditha Jayakumar — Portfolio
+# Niveditha Jayakumar — Portfolio
 
-A personal portfolio website showcasing my work, projects, and writing at the intersection of **technology, AI, and storytelling**.
+Personal portfolio of Niveditha Jayakumar.
 
-# 🔗 Live Site: https://marvelcodeX.github.io
+**Live site:** https://marvelcodeX.github.io
 
----
 
-## ✨ About
+## Built with
 
-This portfolio reflects how I approach building and thinking:
+Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies. Fonts come from Google Fonts: Archivo, Atkinson Hyperlegible Next, Spline Sans Mono and Covered By Your Grace.
 
-* 🤖 Secure AI systems
-* 🧠 Exploring technology beyond functionality
-* ✍️ Writing about emerging technologies, cybersecurity, and ideas
-* ⚡ Hackathon-driven, fast iteration mindset
+## Run it locally
 
----
+```
+python3 -m http.server 8000
+```
 
-## 🚀 Features
+Then open http://localhost:8000. (Opening `index.html` directly also works, but a local server is closer to how GitHub Pages serves it.)
 
-* Responsive design (mobile + desktop)
-* Dark / Light mode toggle 🌗
-* Smooth animations and transitions
-* Clean, minimal, and modern UI
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-* HTML
-* CSS
-* JavaScript
-
----
-
-## 📂 Project Structure
+## Project structure
 
 ```
 .
-├── index.html
-├── styles.css
-├── script.js
+├── index.html            the page
+├── css/styles.css        all styling
+├── js/main.js            theme, menu, project shelf, previews, Ask, journey path
+├── images/
+│   ├── projects/         project screenshots used in the previews
+│   └── favicon, touch icon, social card
 ├── Niveditha_Resume.pdf
 └── README.md
 ```
 
----
-
-## ⚠️ Usage Notice
-
-This portfolio is a personal project and reflects my individual work, ideas, and design decisions.
-
-While you’re welcome to explore and take inspiration, **please do not copy, reproduce, or reuse the code or design directly without permission**.
 
 
----
+## Usage notice
 
-## ⭐ A Note
-
-This portfolio is not just a collection of projects —
-it’s an evolving space that reflects how I think, build, and write.
+This is a personal project and reflects my own work and design decisions. While you're welcome to explore and take inspiration, please do not copy, reproduce or reuse the code or design directly without permission.
